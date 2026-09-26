@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mert-AI | Mert Yeşil Eğitim Portalı</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background: #030712;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Tanıtım Ekranı Container */
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            background: #030712;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* Neon Arka Plan Işıkları */
+        .glow-1, .glow-2 {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glow-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(0,0,0,0) 70%);
+            top: -10%;
+            left: 15%;
+            animation: floatGlow 8s infinite alternate ease-in-out;
+        }
+
+        .glow-2 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(0,0,0,0) 70%);
+            bottom: -10%;
+            right: 15%;
+            animation: floatGlow 10s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, 40px) scale(1.15); }
+        }
+
+        /* Ana Hero Kartı */
+        .intro-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            padding: 48px 36px;
+            max-width: 850px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: cardAppear 1s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: translateY(30px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Rozet & Sayaç */
+        .header-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .logo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #a5b4fc;
+            letter-spacing: 0.5px;
+        }
+
+        .visit-counter {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, #ffffff 30%, #c084fc 80%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        p.subtitle {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Özellik Kartları */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 42px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px 18px;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: left;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(168, 85, 247, 0.3);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            color: #c084fc;
+            font-size: 1.2rem;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .feature-item h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #f1f5f9;
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* CTA Butonu */
+        .start-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            color: white;
+            border: none;
+            padding: 18px 48px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 100px;
+            cursor: pointer;
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.35);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 18px 45px rgba(168, 85, 247, 0.5);
+        }
+
+        .start-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .start-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* iFrame Portalı */
+        #portal-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #portal-screen.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .fade-out {
+            opacity: 0 !important;
+            transform: scale(0.96) !important;
+            pointer-events: none;
+        }
+
+        /* MOBİL UYUM (RESPONSIVE) İYİLEŞTİRMELERİ */
+        @media (max-width: 768px) {
+            #intro-screen {
+                position: absolute;
+                min-height: 100vh;
+                height: auto;
+                padding: 16px 12px;
+                justify-content: flex-start;
+            }
+
+            .intro-card {
+                padding: 24px 16px;
+                border-radius: 20px;
+                margin: auto 0;
+            }
+
+            .header-meta {
+                gap: 8px;
+                margin-bottom: 16px;
+            }
+
+            .logo-badge {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+
+            .visit-counter {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                line-height: 1.25;
+                margin-bottom: 12px;
+            }
+
+            p.subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+                line-height: 1.5;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-bottom: 24px;
+            }
+
+            .feature-item {
+                padding: 12px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                text-align: left;
+            }
+
+            .icon-box {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+                font-size: 1rem;
+                margin-bottom: 0;
+                border-radius: 10px;
+            }
+
+            .feature-item h3 {
+                font-size: 0.95rem;
+                margin-bottom: 2px;
+            }
+
+            .feature-item p {
+                font-size: 0.78rem;
+            }
+
+            .start-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+                font-size: 1rem;
+            }
+
+            .glow-1, .glow-2 {
+                width: 250px;
+                height: 250px;
+                filter: blur(80px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Arka Plan Işıkları -->
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+
+    <!-- Tanıtım Ekranı -->
+    <section id="intro-screen">
+        <div class="intro-card">
+            <div class="header-meta">
+                <div class="logo-badge">
+                    <i class="fa-solid fa-sparkles"></i> Mert Yeşil Eğitim Portalı
+                </div>
+                <div class="visit-counter" id="visitBadge">Tanıtım Modu</div>
+            </div>
+            
+            <h1>Mert-AI Yapay Zeka Çağı Başlıyor</h1>
+            <p class="subtitle">Eğitim sürecini kolaylaştırmak, sorularına anında akıllı yanıtlar almak ve özel öğrenme deneyimi yaşamak için Mert-AI hizmetinizde.</p>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+                    <div>
+                        <h3>Anında Çözümler</h3>
+                        <p>Karmaşık problemleri saniyeler içinde analiz eder.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box"><i class="fa-solid fa-brain"></i></div>
+                    <div>
+                        <h3>Eğitim Odaklı AI</h3>
+                        <p>Mert Yeşil müfredat yapısına özel optimize edilmiştir.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box"><i class="fa-solid fa-clock"></i></div>
+                    <div>
+                        <h3>7/24 Rehber</h3>
+                        <p>Çalışma saatlerinde kesintisiz kişisel asistan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="start-btn" onclick="enterPortal()">
+                Sisteme Giriş Yap <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Orijinal Portal İframe -->
+    <div id="portal-screen">
+        <iframe src="https://mert-ai.ai.studio" title="Mert-AI Yapay Zeka Asistanı"></iframe>
+    </div>
+
+    <script>
+        // Sayfa yüklendiğinde Sayaç Kontrolü
+        document.addEventListener("DOMContentLoaded", () => {
+            let visitCount = parseInt(localStorage.getItem('mert_ai_visits')) || 0;
+            visitCount += 1;
+            localStorage.setItem('mert_ai_visits', visitCount);
+
+            const introScreen = document.getElementById('intro-screen');
+            const portalScreen = document.getElementById('portal-screen');
+            const visitBadge = document.getElementById('visitBadge');
+
+            if (visitCount > 3) {
+                introScreen.style.display = 'none';
+                portalScreen.classList.add('active');
+            } else {
+                visitBadge.innerText = `Tanıtım ${visitCount}/3`;
+            }
+        });
+
+        // Butona tıklandığında Portala Geçiş
+        function enterPortal() {
+            const introScreen = document.getElementById('intro-screen');
+            const portalScreen = document.getElementById('portal-screen');
+
+            introScreen.classList.add('fade-out');
+            
+            setTimeout(() => {
+                introScreen.style.display = 'none';
+                portalScreen.classList.add('active');
+            }, 700);
+        }
+    </script>
+</body>
+</html>

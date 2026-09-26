@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakkımızda | MERT YEŞİL Eğitim Portalı</title>
+  <meta name="description" content="MERT YEŞİL Eğitim Portalı hakkında bilgi, ücretsiz eğitim içerikleri, ders notları ve iletişim bilgileri." />
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Aydınlık Tema Değişkenleri */
+      --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 50%, #f1f5f9 100%);
+      --header-bg: linear-gradient(135deg, #0d9488 0%, #2563eb 100%);
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-border: rgba(255, 255, 255, 0.6);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --heading-color: #0f766e;
+      --box-bg: rgba(204, 251, 241, 0.5);
+      --box-border: #99f6e4;
+      --box-title: #0f766e;
+      --feature-border: #2563eb;
+      --shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+      --shadow-hover: 0 25px 50px -12px rgba(37, 99, 235, 0.18);
+      --nav-bg: rgba(255, 255, 255, 0.7);
+    }
+
+    [data-theme="dark"] {
+      /* Koyu Tema Değişkenleri */
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #0284c7 150%);
+      --header-bg: linear-gradient(135deg, #0f766e 0%, #1e3a8a 100%);
+      --card-bg: rgba(30, 41, 59, 0.75);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --heading-color: #2dd4bf;
+      --box-bg: rgba(15, 118, 110, 0.2);
+      --box-border: rgba(45, 212, 191, 0.3);
+      --box-title: #5eead4;
+      --feature-border: #38bdf8;
+      --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      --shadow-hover: 0 25px 50px -12px rgba(56, 189, 248, 0.25);
+      --nav-bg: rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Yapışkan Navigasyon & Tema Butonu */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, #0d9488, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .theme-toggle {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid var(--card-border);
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 99px;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(5px);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+    }
+
+    /* Üst Alan (Hero) */
+    header {
+      background: var(--header-bg);
+      color: white;
+      padding: 80px 20px 100px;
+      text-align: center;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      font-size: 1.15rem;
+      opacity: 0.95;
+      font-weight: 400;
+    }
+
+    /* Ana İçerik Konteyneri */
+    main {
+      max-width: 1100px;
+      margin: -60px auto 60px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Glassmorphism Kart Yapısı */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      margin-bottom: 32px;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .card h2 {
+      color: var(--heading-color);
+      margin-top: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    /* İstatistik Vurgu Kutuları */
+    .highlight {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .box {
+      background: var(--box-bg);
+      border: 1px solid var(--box-border);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-5px);
+    }
+
+    .box .counter {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--box-title);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .box h3 {
+      margin: 0 0 6px;
+      color: var(--box-title);
+      font-size: 1.1rem;
+    }
+
+    .box p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* Özellik Izgarası */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .feature {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+      border-left: 6px solid var(--feature-border);
+      box-shadow: var(--shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .feature strong {
+      display: block;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    /* İletişim Alanı */
+    .contact {
+      background: linear-gradient(135deg, #0f172a 0%, #0f766e 100%);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact h2 {
+      color: white;
+      justify-content: center;
+    }
+
+    .contact p {
+      color: #e2e8f0;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 32px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 99px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background: #1d4ed8;
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.6);
+    }
+
+    /* Alt Bilgi (Footer) */
+    footer {
+      text-align: center;
+      padding: 32px;
+      background: rgba(15, 23, 42, 0.95);
+      color: #94a3b8;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Keyframe Animasyonları */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive İyileştirmeler */
+    @media (max-width: 640px) {
+      header { padding: 50px 20px 80px; }
+      .card { padding: 24px; border-radius: 20px; }
+      nav { padding: 10px 16px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Gezinme & Tema Değiştirici -->
+  <nav>
+    <div class="brand">MERT YEŞİL</div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Temayı Değiştir">
+      <span id="themeIcon">🌙</span> <span id="themeText">Koyu Mod</span>
+    </button>
+  </nav>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Hakkımızda</h1>
+    <p>
+      Geleceğin eğitimine bugünden erişin. Öğrenciler için ücretsiz ders içerikleri,
+      yazılı kılavuzları ve yenilikçi değerlendirme materyalleri.
+    </p>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+
+    <section class="card">
+      <h2><span>🎓</span> MERT YEŞİL Eğitim Portalı Kimdir?</h2>
+      <p>
+        MERT YEŞİL Eğitim Portalı, 2026 yılında MERT YEŞİL tarafından kurulmuştur.
+        Amacımız; eğitimi daha ulaşılabilir, anlaşılır ve herkes için tamamen ücretsiz bir standarda kavuşturmaktır.
+      </p>
+      <p>
+        Portalımızda özellikle 6. sınıf öğrencilerine yönelik nitelikli yazılı örnekleri, konu tekrar özetleri,
+        interaktif çalışma kağıtları, anlatım sunumları ve süreç değerlendirme sınavları sunulmaktadır. Ayrıca 3, 5 ve 7. sınıf düzeylerine uygun içerikler de sisteme sürekli entegre edilmektedir.
+      </p>
+
+      <div class="highlight">
+        <div class="box">
+          <span class="counter" data-target="125">0</span>
+          <h3>Aktif Materyal</h3>
+          <p>Sürekli güncellenen zengin müfredat içeriği.</p>
+        </div>
+
+        <div class="box">
+          <span class="counter" data-target="100">%0</span>
+          <h3>Ücretsiz Erişim</h3>
+          <p>Tüm öğrenciler için kayıtsız ve şartsız erişim.</p>
+        </div>
+
+        <div class="box">
+          <span class="counter" data-target="2026">0</span>
+          <h3>Yeni Nesil Standart</h3>
+          <p>Maarif Model'e tam uyumlu modern eğitim kaynakları.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span>📚</span> Sitemizde Neler Var?</h2>
+
+      <div class="features">
+        <div class="feature">
+          <strong>6. Sınıf Dersleri</strong>
+          Türkçe, Matematik, Fen Bilimleri, Sosyal Bilgiler, Din Kültürü ve İngilizce içerikleri.
+        </div>
+
+        <div class="feature">
+          <strong>Yazılı Örnekleri</strong>
+          Sınav öncesi pratik yapmayı sağlayan indirilebilir PDF hazırlık setleri.
+        </div>
+
+        <div class="feature">
+          <strong>Süreç Değerlendirme</strong>
+          Bireysel kazanım takibini kolaylaştıran özel değerlendirme testleri ve ölçekleri.
+        </div>
+
+        <div class="feature">
+          <strong>Maarif Model İçerikleri</strong>
+          3 ve 7. sınıflar için güncel müfredat yapısına tam uyumlu materyaller.
+        </div>
+
+        <div class="feature">
+          <strong>Sade Konu Anlatımları</strong>
+          Karmaşık konuları basitleştiren, görsel ağırlıklı özgün ders notları.
+        </div>
+
+        <div class="feature">
+          <strong>Eğitici Materyaller</strong>
+          Öğrenmeyi eğlenceli kılan dijital oyunlar, çalışma kağıtları ve rehber bloglar.
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span>🎯</span> Vizyonumuz</h2>
+      <p>
+        Öğrencilerin akademik başarılarını artırırken öğrenme süreçlerini keyifli hale getirmek.
+        MERT YEŞİL Eğitim Portalı olarak; güvenilir, sade ve öğrenci odaklı bir dijital kaynak merkezi inşa etmeye kararlılıkla devam ediyoruz.
+      </p>
+    </section>
+
+    <section class="card contact">
+      <h2><span>📬</span> Bizimle İletişime Geçin</h2>
+      <p>Soru, öneri ve işbirlikleriniz için bize dilediğiniz zaman ulaşabilirsiniz.</p>
+      <a href="mailto:iletisim@mertyesil.com.tr" class="contact-btn">iletisim@mertyesil.com.tr</a>
+      <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">Üsküdar, İstanbul, Türkiye</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>2026 MERT YEŞİL Eğitim Portalı</p>
+  </footer>
+
+  <script>
+    // Koyu / Aydınlık Mod Yönetimi
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+    const htmlElement = document.documentElement;
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      htmlElement.setAttribute('data-theme', newTheme);
+      themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
+      themeText.textContent = newTheme === 'light' ? 'Koyu Mod' : 'Aydınlık Mod';
+    });
+
+    // İnteraktif Sayaç Animasyonu
+    const counters = document.querySelectorAll('.counter');
+    let animated = false;
+
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const highlightSection = document.querySelector('.highlight');
+
+      if (highlightSection && scrollPosition > highlightSection.offsetTop && !animated) {
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          const isPercentage = counter.innerText.includes('%');
+          let count = 0;
+          const speed = target / 50;
+
+          const updateCount = () => {
+            count += speed;
+            if (count < target) {
+              counter.innerText = (isPercentage ? '%' : '') + Math.ceil(count) + (target === 115 ? '+' : '');
+              setTimeout(updateCount, 30);
+            } else {
+              counter.innerText = (isPercentage ? '%' : '') + target + (target === 115 ? '+' : '');
+            }
+          };
+          updateCount();
+        });
+        animated = true;
+      }
+    });
+  </script>
+
+</body>
+</html>

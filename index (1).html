@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="6. Sınıf, 7. Sınıf, 5. Sınıf ve 3. Sınıf için ders notları, konu anlatımları, testler ve yazılıya hazırlık örnekleri.">
+<meta name="theme-color" content="#1e3a8a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="msvalidate.01" content="4CDAB2EF53D8ACE0AD81A5FC4C48B3BE" />
+
+<title>MERT YEŞİL Eğitim Portalı</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#eef2ff,#f8fafc);
+color:#0f172a;
+}
+
+header{
+background:linear-gradient(135deg,#1e3a8a,#2563eb);
+color:white;
+padding:16px;
+box-shadow:0 6px 18px rgba(30,58,138,0.25);
+}
+
+.menu{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.logo{
+font-size:23px;
+font-weight:800;
+letter-spacing:.3px;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+font-weight:600;
+font-size:14px;
+}
+
+.nav a:hover{
+opacity:0.8;
+}
+
+.site-stats{
+background:rgba(255,255,255,0.15);
+padding:7px 12px;
+border-radius:999px;
+font-size:13px;
+font-weight:700;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+margin-top:24px;
+background:white;
+padding:24px;
+border-radius:20px;
+box-shadow:0 18px 45px rgba(15,23,42,0.12);
+}
+
+.mainTitle{
+font-size:28px;
+font-weight:900;
+color:#1e3a8a;
+margin-bottom:8px;
+}
+
+.altBaslik{
+color:#64748b;
+margin-bottom:18px;
+font-size:15px;
+}
+
+.news-section{
+margin-top:20px;
+background:linear-gradient(135deg,#eff6ff,#ffffff);
+border:1px solid #dbeafe;
+border-radius:16px;
+padding:18px;
+}
+
+.news-title{
+font-size:19px;
+font-weight:800;
+color:#1e3a8a;
+margin-bottom:14px;
+}
+
+.news-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.news-card{
+background:white;
+border:1px solid #e2e8f0;
+border-radius:14px;
+padding:15px;
+box-shadow:0 8px 18px rgba(15,23,42,0.06);
+}
+
+.news-card span{
+display:inline-block;
+font-size:12px;
+font-weight:800;
+color:#2563eb;
+margin-bottom:7px;
+}
+
+.news-card h3{
+font-size:15px;
+color:#0f172a;
+margin-bottom:6px;
+}
+
+.news-card p{
+font-size:13px;
+color:#64748b;
+line-height:1.5;
+}
+
+.class-section{
+margin-top:20px;
+background:#f8fafc;
+border-radius:16px;
+padding:17px;
+border:1px solid #e2e8f0;
+}
+
+.class-title{
+font-size:19px;
+font-weight:800;
+margin-bottom:14px;
+color:#0f172a;
+}
+
+.lesson-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:13px;
+}
+
+.lesson{
+background:white;
+border-radius:14px;
+padding:17px;
+border:1px solid #e5e7eb;
+text-decoration:none;
+transition:0.25s;
+box-shadow:0 6px 14px rgba(15,23,42,0.04);
+display:block;
+}
+
+.lesson:hover{
+transform:translateY(-4px);
+box-shadow:0 14px 26px rgba(30,58,138,0.15);
+border-color:#bfdbfe;
+}
+
+.lesson h3{
+color:#1e3a8a;
+font-size:16px;
+margin-bottom:5px;
+}
+
+.lesson p{
+font-size:13px;
+color:#64748b;
+line-height:1.4;
+}
+
+.yazili{
+background:linear-gradient(135deg,#ecfeff,#f0f9ff);
+border:1px solid #67e8f9;
+}
+
+/* Yakında (henüz yayınlanmamış) dersler için stil */
+.lesson.yakinda{
+pointer-events:none;
+cursor:default;
+opacity:0.55;
+background:#f1f5f9;
+box-shadow:none;
+}
+
+.lesson.yakinda:hover{
+transform:none;
+box-shadow:none;
+border-color:#e5e7eb;
+}
+
+.footer{
+margin-top:24px;
+text-align:center;
+font-size:13px;
+color:#64748b;
+}
+
+/* DUYURU */
+
+#duyuruArka{
+position:fixed;
+inset:0;
+background:rgba(15,23,42,0.72);
+backdrop-filter:blur(8px);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+padding:20px;
+}
+
+#duyuruKutu{
+position:relative;
+background:linear-gradient(180deg,#ffffff,#f8faff);
+width:100%;
+max-width:430px;
+padding:0;
+border-radius:24px;
+text-align:center;
+box-shadow:0 30px 70px rgba(15,23,42,0.35);
+animation:duyuruAc .3s cubic-bezier(.2,.8,.2,1);
+overflow:hidden;
+border:1px solid #e0e7ff;
+}
+
+.duyuru-ust{
+background:linear-gradient(135deg,#1e3a8a,#2563eb 55%,#0ea5e9);
+padding:26px 26px 22px;
+position:relative;
+}
+
+.duyuru-rozet{
+display:inline-flex;
+align-items:center;
+gap:6px;
+background:rgba(255,255,255,0.16);
+color:#e0f2fe;
+font-size:12px;
+font-weight:700;
+padding:6px 13px;
+border-radius:999px;
+margin-bottom:12px;
+border:1px solid rgba(255,255,255,0.25);
+}
+
+.duyuru-rozet .nokta{
+width:7px;
+height:7px;
+border-radius:50%;
+background:#4ade80;
+box-shadow:0 0 0 0 rgba(74,222,128,.6);
+animation:nabiz 1.8s infinite;
+}
+
+@keyframes nabiz{
+0%{box-shadow:0 0 0 0 rgba(74,222,128,.55);}
+70%{box-shadow:0 0 0 9px rgba(74,222,128,0);}
+100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}
+}
+
+#duyuruKutu h2{
+color:white;
+font-size:22px;
+font-weight:800;
+line-height:1.3;
+}
+
+.duyuru-govde{
+padding:22px 26px 28px;
+}
+
+#duyuruKutu p.duyuru-metin{
+color:#475569;
+font-size:14px;
+line-height:1.65;
+text-align:left;
+}
+
+.ozellik-listesi{
+list-style:none;
+text-align:left;
+margin:18px 0 4px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.ozellik-listesi li{
+display:flex;
+align-items:flex-start;
+gap:11px;
+font-size:13.5px;
+color:#1e293b;
+background:#f1f5ff;
+border:1px solid #e0e7ff;
+border-radius:12px;
+padding:10px 12px;
+}
+
+.ozellik-listesi .ikon{
+flex:0 0 auto;
+width:30px;
+height:30px;
+border-radius:9px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:15px;
+background:linear-gradient(135deg,#2563eb,#0ea5e9);
+color:white;
+}
+
+.ozellik-listesi strong{
+display:block;
+font-size:13.5px;
+color:#0f172a;
+}
+
+.ozellik-listesi span.aciklama{
+display:block;
+font-size:12px;
+color:#64748b;
+margin-top:1px;
+}
+
+#duyuruButon{
+margin-top:20px;
+width:100%;
+background:linear-gradient(135deg,#1e3a8a,#2563eb);
+color:white;
+border:none;
+padding:13px 24px;
+border-radius:12px;
+cursor:pointer;
+font-weight:700;
+font-size:14.5px;
+box-shadow:0 10px 22px rgba(37,99,235,0.3);
+transition:transform .15s ease, box-shadow .15s ease;
+}
+
+#duyuruButon:hover{
+transform:translateY(-2px);
+box-shadow:0 14px 28px rgba(37,99,235,0.38);
+}
+
+@keyframes duyuruAc{
+from{
+opacity:0;
+transform:scale(.94) translateY(8px);
+}
+to{
+opacity:1;
+transform:scale(1) translateY(0);
+}
+}
+
+@media(max-width:800px){
+.lesson-grid,
+.news-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:500px){
+.lesson-grid,
+.news-grid{
+grid-template-columns:1fr;
+}
+
+.nav{
+width:100%;
+justify-content:center;
+margin-top:10px;
+}
+
+.mainTitle{
+font-size:24px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div id="duyuruArka" role="dialog" aria-modal="true" aria-labelledby="duyuruBaslik" style="display:none;">
+  <div id="duyuruKutu">
+    <div class="duyuru-ust">
+      <div class="duyuru-rozet"><span class="nokta"></span> Çok yakında</div>
+      <h2 id="duyuruBaslik">Eğitim Portalımız yeni bir döneme giriyor 🚀</h2>
+    </div>
+    <div class="duyuru-govde">
+      <p class="duyuru-metin">
+        3. sınıf ve 7. sınıf (2026-2027 öğretim yılı) Maarif Model içerikleri yayında! 
+		  Üstelik portalda çok daha fazlası var:
+      </p>
+
+      <ul class="ozellik-listesi">
+        <li>
+          <span class="ikon">✨</span>
+          <span>
+            <strong>Mert AI entegrasyonu (Yeni)</strong>
+            <span class="aciklama">Sorularını anında yanıtlayan, konu anlatımını sana özel açıklayan yapay zekâ asistanı yakında burada. 10.09.2026 tarihinde v3.0 hizmetinize girmiştir.</span>
+          </span>
+        </li>
+        <li>
+          <span class="ikon">📱</span>
+          <span>
+            <strong>Mobil Erişilebilirlik (Yeni)</strong>
+            <span class="aciklama">Tüm ders notları, testler ve yazılı örnekleri artık webde mobil uyumlu!</span>
+          </span>
+        </li>
+        <li>
+          <span class="ikon">📅</span>
+          <span>
+            <strong>Ders Araçları (Yeni)</strong>
+            <span class="aciklama">Sınav sonucu hesaplayıcı, ders programı oluşturucu ve soru çözüm hızı analizi sistemeleri hizmetinizde!</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div style="padding:0 26px 26px;">
+      <button id="duyuruButon" onclick="duyuruKapat()" aria-label="Duyuruyu kapat">Harika, devam edeyim</button>
+    </div>
+  </div>
+</div>
+
+<header>
+<div class="menu">
+
+<div class="logo">
+📚 MERT YEŞİL
+</div>
+
+<div class="nav">
+<a href="#">Ana Sayfa</a>
+<a href="hakkimizda.html">Hakkımızda</a>
+<a href="/araclar/">Ders Araçları</a>
+<a href="ai.html">MERT Aİ(Yeni)</a>
+<a href="/dersler/akillitahta.html">Akıllı Tahta(Yeni)</a>
+<a href="gizlilik.html">Gizlilik Politikası</a>
+<a href="iletisim.html">İletişim</a>
+
+<span class="site-stats">
+📊 125'ten fazla içerik
+</span>
+</div>
+
+</div>
+</header>
+
+<div class="container">
+
+<div class="mainTitle">
+MERT YEŞİL EĞİTİM PORTALI
+</div>
+
+<div class="altBaslik">
+Ders Notları ve Yazılı Örnekleri
+</div>
+
+<div class="news-section">
+
+<div class="news-title">
+📰 Haberler ve Duyurular
+</div>
+
+<div class="news-grid">
+
+<div class="news-card">
+<span>Son eklenen</span>
+<h3>MERT AI modülü aktif edildi.</h3>
+<p>Sitemizin yapay zeka eğitim asistanı MERT AI aktif edildi.</p>
+</div>
+	
+<div class="news-card">
+<span>Son eklenen</span>
+<h3>3 ve 7.Sınıflar (2026-2027 öğretim yılı için maarif modeli) içerikleri</h3>
+<p>3 ve 7.Sınıflar için fen bilimleri derslerinin ilk içerikleri sistemimize yüklenmiştir.</p>
+</div>
+
+<div class="news-card">
+<span>Bilgi</span>
+<h3>7.Sınıf maarif model 2026-2027 öğretim yılı içerikleri hakkında</h3>
+<p>7.Sınıf maarif model (2026-2027) içerikleri Haziran 2026'dan itibaren kademeli olarak yüklenecektir.</p>
+</div>
+
+
+</div>
+</div>
+	
+<div class="class-section yazili">
+
+<div class="class-title">
+📝 Yazılı Örnekleri
+</div>
+
+<div class="lesson-grid">
+
+<a class="lesson" href="dersler/6/yazili.html">
+<h3>6.Sınıf Yazılılar</h3>
+<p>PDF yazılı örnekleri</p>
+</a>
+<a class="lesson" href="dersler/7/yazili.html">
+<h3>7.Sınıf Yazılılar</h3>
+<p>PDF yazılı örnekleri</p>
+</a>
+
+</div>
+</div>
+
+<div class="class-section">
+
+<div class="class-title">
+📘 6.Sınıf Dersleri
+</div>
+
+<div class="lesson-grid">
+
+<a class="lesson" href="dersler/7/yazkamp.html">
+<h3>6'dan 7'ye Geçiş Kampı</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+	
+<a class="lesson" href="dersler/6/turkce.html">
+<h3>Türkçe</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/6/mat.html">
+<h3>Matematik</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/6/fen.html">
+<h3>Fen Bilimleri</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/6/sosyal.html">
+<h3>Sosyal Bilgiler</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/6/din.html">
+<h3>Din Kültürü</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson yakinda" href="dersler/6/ingilizce.html" aria-disabled="true" tabindex="-1">
+<h3>İngilizce (YAKINDA)</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/6/sinav.html">
+<h3>Süreç Değerlendirme Sınavları</h3>
+<p>Değerlendirme Sınavları ve Değerlendirme Ölçeği</p>
+</a>
+
+</div>
+</div>
+
+	<div class="class-section">
+
+<div class="class-title">
+📘 7.Sınıf Dersleri
+</div>
+
+<div class="lesson-grid">
+
+<a class="lesson" href="dersler/7/turkce.html" aria-disabled="true" tabindex="-1">
+<h3>Türkçe</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/7/mat.html">
+<h3>Matematik</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/7/fen.html">
+<h3>Fen Bilimleri</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/7/sosyal.html">
+<h3>Sosyal Bilgiler</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/7/din.html" aria-disabled="true" tabindex="-1">
+<h3>Din Kültürü</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson yakinda" href="dersler/7/ingilizce.html" aria-disabled="true" tabindex="-1">
+<h3>İngilizce (YAKINDA)</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+</div>
+</div>
+	
+<div class="class-section">
+	
+<div class="class-title">
+📘 3.Sınıf Dersleri
+</div>
+
+<div class="lesson-grid">
+
+<a class="lesson yakinda" href="dersler/3/turkce.html" aria-disabled="true" tabindex="-1">
+<h3>Türkçe (YAKINDA)</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson yakinda" href="dersler/3/mat.html" aria-disabled="true" tabindex="-1">
+<h3>Matematik (YAKINDA)</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/3/fen.html">
+<h3>Fen Bilimleri Maarif</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson yakinda" href="dersler/3/hayat.html" aria-disabled="true" tabindex="-1">
+<h3>Hayat Bilgisi (YAKINDA)</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+</div>
+</div>
+	
+	
+<div class="class-section">
+
+<div class="class-title">
+📘 5.Sınıf Dersleri
+</div>
+
+<div class="lesson-grid">
+
+<a class="lesson yakinda" href="dersler/5/turkce.html" aria-disabled="true" tabindex="-1">
+<h3>Türkçe (YAKINDA)</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/5/mat.html">
+<h3>Matematik</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson yakinda" href="dersler/5/fen.html" aria-disabled="true" tabindex="-1">
+<h3>Fen Bilimleri (YAKINDA)</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson yakinda" href="dersler/5/sosyal.html" aria-disabled="true" tabindex="-1">
+<h3>Sosyal Bilgiler (YAKINDA)</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson" href="dersler/5/din.html">
+<h3>Din Kültürü</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+<a class="lesson yakinda" href="dersler/5/ingilizce.html" aria-disabled="true" tabindex="-1">
+<h3>İngilizce (YAKINDA)</h3>
+<p>Konu anlatımı ve testler</p>
+</a>
+
+</div>
+</div>
+
+<div class="footer">
+2026 Mert Yeşil Eğitim Portalı
+</div>
+
+</div>
+
+<script>
+function duyuruKapat(){
+  document.getElementById("duyuruArka").style.display = "none";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("duyuruArka").style.display = "flex";
+
+  // Arka plana tıklayınca kapat
+  document.getElementById("duyuruArka").addEventListener("click", function(e){
+    if(e.target.id === "duyuruArka"){
+      duyuruKapat();
+    }
+  });
+
+  // Esc tuşu ile kapat
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+      var kutu = document.getElementById("duyuruArka");
+      if(kutu.style.display !== "none"){
+        duyuruKapat();
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>
