@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Sayacı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="pomodoro-card">
+        <!-- Ders Input Alanı -->
+        <input type="text" id="subjectInput" class="subject-input" placeholder="Ders / Konu Giriniz..." autocomplete="off">
+
+        <!-- Hızlı Süre Modları -->
+        <div class="mode-selector">
+            <button class="mode-btn active" onclick="setPreset(25, 5, this)">25 / 5</button>
+            <button class="mode-btn" onclick="setPreset(45, 10, this)">45 / 10</button>
+            <button class="mode-btn" onclick="setPreset(15, 3, this)">15 / 3</button>
+        </div>
+
+        <!-- Dairesel Sayaç -->
+        <div class="circle-container">
+            <svg class="progress-ring" width="200" height="200">
+                <circle class="progress-ring__circle-bg" stroke="#21262d" stroke-width="8" fill="transparent" r="85" cx="100" cy="100"/>
+                <circle id="progressCircle" class="progress-ring__circle" stroke="#238636" stroke-width="8" fill="transparent" r="85" cx="100" cy="100"/>
+            </svg>
+            <div class="timer-inner">
+                <div id="statusBadge" class="status-badge">ODAKLANMA</div>
+                <div id="timerDisplay" class="timer-display">25:00</div>
+            </div>
+        </div>
+
+        <!-- Seans Sayacı -->
+        <div class="streak-counter">
+            Tamamlanan Seans: <span id="streakCount">0</span> 🎯
+        </div>
+        
+        <!-- Butonlar -->
+        <div class="btn-group">
+            <button id="startBtn" class="btn-start" onclick="baslatTetikle()">Başlat</button>
+            <button class="btn-reset" onclick="sifirlaTetikle()">Sıfırla</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
