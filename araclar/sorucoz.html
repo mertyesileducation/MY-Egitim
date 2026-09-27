@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soru Çözüm Hızı Analizcisi - Mega Edition</title>
+    <!-- Chart.js Kütüphanesi -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        h2, h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            text-align: center;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 180px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #555;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        .timer-display {
+            font-size: 56px;
+            font-weight: bold;
+            text-align: center;
+            color: #2c3e50;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .total-timer {
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        .question-counter {
+            text-align: center;
+            font-size: 18px;
+            color: #2980b9;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: white;
+            min-width: 120px;
+        }
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+        button:active { transform: translateY(1px); }
+
+        .btn-start { background-color: #2ecc71; }
+        .btn-next { background-color: #3498db; }
+        .btn-skip { background-color: #f39c12; }
+        .btn-stop { background-color: #e74c3c; }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .stat-box {
+            background: #f8f9fa;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .stat-box h4 {
+            margin: 0 0 5px 0;
+            color: #7f8c8d;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .stat-box p {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .advice-box {
+            background-color: #e8f4f8;
+            border-left: 5px solid #2980b9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .chart-container {
+            margin-top: 25px;
+            position: relative;
+            height: 250px;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 14px;
+        }
+        th {
+            background-color: #f2f4f7;
+            color: #333;
+        }
+        .status-fast { background-color: #e8f8f5; color: #27ae60; font-weight: bold; }
+        .status-slow { background-color: #fadbd8; color: #c0392b; font-weight: bold; }
+        .status-skipped { background-color: #fef9e7; color: #d35400; font-weight: bold; }
+
+        .history-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>🚀 Soru Çözüm Hızı Analizcisi</h2>
+        
+        <div class="form-row">
+            <div class="input-group">
+                <label for="lessonSelect">Ders Seçin</label>
+                <select id="lessonSelect">
+                    <option value="Türkçe">Türkçe</option>
+                    <option value="Matematik">Matematik</option>
+                    <option value="Fen Bilimleri">Fen Bilimleri</option>
+                    <option value="Sosyal Bilgiler">Sosyal Bilgiler</option>
+                    <option value="İngilizce">İngilizce</option>
+                    <option value="Paragraf">Paragraf</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="targetQuestions">Hedef Soru Sayısı</label>
+                <input type="number" id="targetQuestions" value="20" min="1">
+            </div>
+            <div class="input-group">
+                <label for="targetTimePerQ">Hedef Saniye / Soru</label>
+                <input type="number" id="targetTimePerQ" value="90" min="10" placeholder="Örn: 90 sn">
+            </div>
+        </div>
+
+        <div class="question-counter" id="questionCounter">Hazır mısın? Testi Başlat!</div>
+        <div class="timer-display" id="timerDisplay">00:00</div>
+        <div class="total-timer" id="totalTimerDisplay">Toplam Süre: 00:00</div>
+
+        <div class="btn-group">
+            <button id="startBtn" class="btn-start" onclick="startTest()">Testi Başlat</button>
+            <button id="nextBtn" class="btn-next" onclick="nextQuestion(false)" style="display: none;">Sonraki Soru</button>
+            <button id="skipBtn" class="btn-skip" onclick="nextQuestion(true)" style="display: none;">Boş Bırak / Pas Geç</button>
+            <button id="stopBtn" class="btn-stop" onclick="finishTest()" style="display: none;">Testi Bitir</button>
+        </div>
+    </div>
+
+    <div class="card" id="resultsCard" style="display: none;">
+        <h3>📊 Test Analiz Raporu</h3>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <h4>Çözülen Soru</h4>
+                <p id="statTotalQ">0</p>
+            </div>
+            <div class="stat-box">
+                <h4>Toplam Süre</h4>
+                <p id="statTotalTime">00:00</p>
+            </div>
+            <div class="stat-box">
+                <h4>Ortalama / Soru</h4>
+                <p id="statAvgTime">0 sn</p>
+            </div>
+            <div class="stat-box">
+                <h4>En Hızlı / En Yavaş</h4>
+                <p id="statMinMax" style="font-size: 14px;">-</p>
+            </div>
+        </div>
+
+        <div class="advice-box" id="adviceBox">
+            <!-- Dinamik Koçluk Önerisi Buraya Gelecek -->
+        </div>
+
+        <div class="chart-container">
+            <canvas id="speedChart"></canvas>
+        </div>
+
+        <h4 style="margin-top: 25px; color: #555;">Soru Bazlı Detay Listesi</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Süre</th>
+                    <th>Durum</th>
+                </tr>
+            </thead>
+            <tbody id="detailsTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Geçmiş Testler -->
+    <div class="card">
+        <h3>📜 Geçmiş Test Kayıtları</h3>
+        <div class="history-list" id="historyList">Henüz kaydedilmiş test yok.</div>
+        <button onclick="clearHistory()" style="background-color: #7f8c8d; margin-top: 10px; width: auto; padding: 6px 12px; font-size: 12px;">Geçmişi Temizle</button>
+    </div>
+</div>
+
+<script>
+    let timerInterval = null;
+    let totalSeconds = 0;
+    let questionSeconds = 0;
+    let currentQuestion = 0;
+    let targetQuestions = 20;
+    let targetTimePerQ = 90;
+    let questionTimes = [];
+    let speedChartInstance = null;
+
+    function formatTime(sec) {
+        const mins = Math.floor(sec / 60);
+        const secs = sec % 60;
+        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function playBeep() {
+        if (navigator.vibrate) navigator.vibrate(50); // Mobil Cihaz Titreşimi
+    }
+
+    function startTest() {
+        targetQuestions = parseInt(document.getElementById('targetQuestions').value) || 20;
+        targetTimePerQ = parseInt(document.getElementById('targetTimePerQ').value) || 90;
+        
+        currentQuestion = 1;
+        questionTimes = [];
+        totalSeconds = 0;
+        questionSeconds = 0;
+
+        document.getElementById('lessonSelect').disabled = true;
+        document.getElementById('targetQuestions').disabled = true;
+        document.getElementById('targetTimePerQ').disabled = true;
+
+        document.getElementById('startBtn').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'inline-block';
+        document.getElementById('skipBtn').style.display = 'inline-block';
+        document.getElementById('stopBtn').style.display = 'inline-block';
+        document.getElementById('resultsCard').style.display = 'none';
+
+        updateCounter();
+
+        timerInterval = setInterval(() => {
+            totalSeconds++;
+            questionSeconds++;
+            document.getElementById('timerDisplay').innerText = formatTime(questionSeconds);
+            document.getElementById('totalTimerDisplay').innerText = `Toplam Süre: ${formatTime(totalSeconds)}`;
+        }, 1000);
+    }
+
+    function nextQuestion(isSkipped = false) {
+        playBeep();
+        questionTimes.push({
+            time: questionSeconds,
+            skipped: isSkipped
+        });
+
+        questionSeconds = 0;
+        document.getElementById('timerDisplay').innerText = "00:00";
+
+        if (currentQuestion >= targetQuestions) {
+            finishTest();
+        } else {
+            currentQuestion++;
+            updateCounter();
+        }
+    }
+
+    function updateCounter() {
+        document.getElementById('questionCounter').innerText = `Soru: ${currentQuestion} / ${targetQuestions}`;
+    }
+
+    function finishTest() {
+        clearInterval(timerInterval);
+
+        document.getElementById('lessonSelect').disabled = false;
+        document.getElementById('targetQuestions').disabled = false;
+        document.getElementById('targetTimePerQ').disabled = false;
+
+        document.getElementById('startBtn').style.display = 'inline-block';
+        document.getElementById('nextBtn').style.display = 'none';
+        document.getElementById('skipBtn').style.display = 'none';
+        document.getElementById('stopBtn').style.display = 'none';
+
+        if (questionTimes.length > 0) {
+            renderResults();
+            saveHistory();
+        }
+    }
+
+    function renderResults() {
+        const totalQ = questionTimes.length;
+        const validQuestions = questionTimes.filter(q => !q.skipped);
+        const skippedCount = questionTimes.filter(q => q.skipped).length;
+
+        const sumSeconds = questionTimes.reduce((a, b) => a + b.time, 0);
+        const avgSec = validQuestions.length > 0 ? Math.round(validQuestions.reduce((a, b) => a + b.time, 0) / validQuestions.length) : 0;
+
+        const timesOnly = validQuestions.map(q => q.time);
+        const minTime = timesOnly.length ? Math.min(...timesOnly) : 0;
+        const maxTime = timesOnly.length ? Math.max(...timesOnly) : 0;
+
+        document.getElementById('statTotalQ').innerText = `${totalQ} (${skippedCount} Boş)`;
+        document.getElementById('statTotalTime').innerText = formatTime(sumSeconds);
+        document.getElementById('statAvgTime').innerText = `${avgSec} sn`;
+        document.getElementById('statMinMax').innerText = `⚡ ${minTime}s | 🐢 ${maxTime}s`;
+
+        // Koçluk Tavsiye Algoritması
+        const adviceBox = document.getElementById('adviceBox');
+        let adviceHtml = `<strong>🎯 Performans Koçu Değerlendirmesi:</strong><br>`;
+        if (avgSec <= targetTimePerQ) {
+            adviceHtml += `Harika iş! Soru başına ortalama süreniz (${avgSec} sn), belirlediğiniz hedef sürenin (${targetTimePerQ} sn) altında. Hızınızı koruyun!`;
+        } else {
+            adviceHtml += `Hedefinizin biraz gerisindesiniz. Soru başına ortalama süreniz (${avgSec} sn), hedeflenen (${targetTimePerQ} sn) süreden yüksek. Özellikle vakit harcayan sorulara tekrar göz atın.`;
+        }
+        if (skippedCount > 0) {
+            adviceHtml += `<br><em>Not: Toplam ${skippedCount} soruyu boş bıraktınız veya pas geçtiniz.</em>`;
+        }
+        adviceBox.innerHTML = adviceHtml;
+
+        // Tablo Doldurma
+        const tbody = document.getElementById('detailsTable');
+        tbody.innerHTML = '';
+
+        questionTimes.forEach((q, index) => {
+            const tr = document.createElement('tr');
+            let statusText = "";
+            let statusClass = "";
+
+            if (q.skipped) {
+                statusText = "Boş / Pas";
+                statusClass = "status-skipped";
+            } else if (q.time <= targetTimePerQ) {
+                statusText = "Hızlı";
+                statusClass = "status-fast";
+            } else {
+                statusText = "Yavaş";
+                statusClass = "status-slow";
+            }
+
+            tr.innerHTML = `
+                <td>Soru ${index + 1}</td>
+                <td>${formatTime(q.time)} (${q.time} sn)</td>
+                <td class="${statusClass}">${statusText}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // Grafiği Oluştur
+        renderChart();
+
+        document.getElementById('resultsCard').style.display = 'block';
+    }
+
+    function renderChart() {
+        const ctx = document.getElementById('speedChart').getContext('2d');
+        const labels = questionTimes.map((_, i) => `S${i + 1}`);
+        const data = questionTimes.map(q => q.time);
+
+        if (speedChartInstance) {
+            speedChartInstance.destroy();
+        }
+
+        speedChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Soru Süresi (sn)',
+                        data: data,
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Hedef Süre (sn)',
+                        data: Array(questionTimes.length).fill(targetTimePerQ),
+                        borderColor: '#e74c3c',
+                        borderDash: [5, 5],
+                        fill: false,
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Saniye' } }
+                }
+            }
+        });
+    }
+
+    // LocalStorage İşlemleri
+    function saveHistory() {
+        const history = JSON.parse(localStorage.getItem('speedTestHistory')) || [];
+        const lesson = document.getElementById('lessonSelect').value;
+        const totalQ = questionTimes.length;
+        const sumSeconds = questionTimes.reduce((a, b) => a + b.time, 0);
+
+        history.unshift({
+            date: new Date().toLocaleDateString('tr-TR'),
+            lesson: lesson,
+            questions: totalQ,
+            time: formatTime(sumSeconds)
+        });
+
+        localStorage.setItem('speedTestHistory', JSON.stringify(history.slice(0, 10))); // Son 10 kayıt
+        loadHistory();
+    }
+
+    function loadHistory() {
+        const history = JSON.parse(localStorage.getItem('speedTestHistory')) || [];
+        const container = document.getElementById('historyList');
+
+        if (history.length === 0) {
+            container.innerHTML = "Henüz kaydedilmiş test yok.";
+            return;
+        }
+
+        container.innerHTML = history.map(item => `
+            <div class="history-item">
+                <span><strong>${item.lesson}</strong> - ${item.date}</span>
+                <span>${item.questions} Soru / ${item.time}</span>
+            </div>
+        `).join('');
+    }
+
+    function clearHistory() {
+        localStorage.removeItem('speedTestHistory');
+        loadHistory();
+    }
+
+    window.onload = loadHistory;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Ders Araçları Portalı</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        .header p {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin: 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid #3498db;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+        .card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .card-btn {
+            display: block;
+            text-align: center;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .card-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Kartlara Özel Renk Vurguları */
+        .card.lgs { border-top-color: #e74c3c; }
+        .card.lgs .card-btn { background-color: #e74c3c; }
+        .card.lgs .card-btn:hover { background-color: #c0392b; }
+
+        .card.schedule { border-top-color: #2ecc71; }
+        .card.schedule .card-btn { background-color: #2ecc71; }
+        .card.schedule .card-btn:hover { background-color: #27ae60; }
+
+        .card.speed { border-top-color: #9b59b6; }
+        .card.speed .card-btn { background-color: #9b59b6; }
+        .card.speed .card-btn:hover { background-color: #8e44ad; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Öğrenci Ders Araçları Portalı</h1>
+        <p>Çalışma verimliliğinizi artırmak ve sınav takibinizi yapmak için araç seçin</p>
+    </div>
+
+    <div class="grid">
+        <!-- 1. Araç: LGS Puan Hesaplama -->
+        <div class="card lgs">
+            <div>
+                <div class="card-icon">📊</div>
+                <h3>Sınav Puan Hesaplama</h3>
+                <p>Doğru ve yanlış sayılarınızı girerek MEB standartlarına uygun tahmini sınav puanınızı ve netlerinizi hesaplayın.</p>
+            </div>
+            <a href="puanhesap.html" class="card-btn">Hesaplayıcıya Git</a>
+        </div>
+
+        <!-- 2. Araç: Haftalık Ders Programı -->
+        <div class="card schedule">
+            <div>
+                <div class="card-icon">📅</div>
+                <h3>Haftalık Ders Programı</h3>
+                <p>Derslerinizi ve saatlerinizi ekleyerek haftalık çalışma programınızı oluşturun, yazdırın veya cihazınıza kaydedin.</p>
+            </div>
+            <a href="program.html" class="card-btn">Programı Oluştur</a>
+        </div>
+
+        <!-- 3. Araç: Soru Çözüm Hızı Analizcisi -->
+        <div class="card speed">
+            <div>
+                <div class="card-icon">⏱️</div>
+                <h3>Soru Çözüm Hızı Analizcisi</h3>
+                <p>Soru çözerken zamanı tutun, soru bazlı süre analizini çıkararak hangi derste ne kadar hızlandığınızı görün.</p>
+            </div>
+            <a href="sorucoz.html" class="card-btn">Analizi Başlat</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

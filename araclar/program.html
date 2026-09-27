@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelişmiş Haftalık Ders Programı Oluşturucu</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .form-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 150px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            width: 100%;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 18px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        .add-btn { background-color: #3498db; }
+        .add-btn:hover { background-color: #2980b9; }
+        
+        .print-btn { background-color: #2ecc71; }
+        .print-btn:hover { background-color: #27ae60; }
+        
+        .clear-btn { background-color: #e74c3c; }
+        .clear-btn:hover { background-color: #c0392b; }
+
+        .table-container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: center;
+            vertical-align: top;
+            width: 14.28%;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-size: 14px;
+        }
+        .lesson-item {
+            border-left: 4px solid #3498db;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            text-align: left;
+            position: relative;
+            font-size: 13px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .lesson-item strong {
+            display: block;
+            color: #2c3e50;
+        }
+        .lesson-item span {
+            color: #555;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: transparent;
+            color: #e74c3c;
+            border: none;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0 4px;
+        }
+        .delete-btn:hover {
+            color: #c0392b;
+            background: transparent;
+        }
+
+        /* YAZDIRMA AYARLARI */
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .form-card, .delete-btn {
+                display: none !important;
+            }
+            .table-container {
+                box-shadow: none;
+                padding: 0;
+            }
+            h2 {
+                margin-bottom: 15px;
+            }
+            th {
+                background-color: #f2f2f2 !important;
+                color: #000 !important;
+            }
+            .lesson-item {
+                border-left-color: #333 !important;
+                background-color: #f9f9f9 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Haftalık Ders Programı</h2>
+
+    <div class="form-card">
+        <div class="input-group">
+            <label for="lessonSelect">Ders</label>
+            <select id="lessonSelect" onchange="toggleCustomLesson(this)">
+                <option value="Türkçe">Türkçe</option>
+                <option value="Matematik">Matematik</option>
+                <option value="Fen Bilimleri">Fen Bilimleri</option>
+                <option value="Sosyal Bilgiler">Sosyal Bilgiler</option>
+                <option value="Din Kültürü ve Ahlak Bilgisi">Din Kültürü</option>
+                <option value="İngilizce">İngilizce</option>
+                <option value="Paragraf">Paragraf</option>
+                <option value="T.C. İnkılap Tarihi">İnkılap Tarihi</option>
+                <option value="custom">-- Özel Ders Ekle --</option>
+            </select>
+        </div>
+        
+        <div class="input-group" id="customLessonGroup" style="display: none;">
+            <label for="customLessonInput">Özel Ders Adı</label>
+            <input type="text" id="customLessonInput" placeholder="Ders adı girin">
+        </div>
+
+        <div class="input-group">
+            <label for="daySelect">Gün</label>
+            <select id="daySelect">
+                <option value="0">Pazartesi</option>
+                <option value="1">Salı</option>
+                <option value="2">Çarşamba</option>
+                <option value="3">Perşembe</option>
+                <option value="4">Cuma</option>
+                <option value="5">Cumartesi</option>
+                <option value="6">Pazar</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="startTime">Başlangıç</label>
+            <input type="time" id="startTime" value="09:00">
+        </div>
+
+        <div class="input-group">
+            <label for="endTime">Bitiş</label>
+            <input type="time" id="endTime" value="09:40">
+        </div>
+
+        <div class="btn-group">
+            <button class="add-btn" onclick="addLesson()">Ders Ekle</button>
+            <button class="print-btn" onclick="window.print()">Yazdır / PDF</button>
+            <button class="clear-btn" onclick="clearAll()">Sıfırla</button>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pazartesi</th>
+                    <th>Salı</th>
+                    <th>Çarşamba</th>
+                    <th>Perşembe</th>
+                    <th>Cuma</th>
+                    <th>Cumartesi</th>
+                    <th>Pazar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="day-0"></td>
+                    <td id="day-1"></td>
+                    <td id="day-2"></td>
+                    <td id="day-3"></td>
+                    <td id="day-4"></td>
+                    <td id="day-5"></td>
+                    <td id="day-6"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    let lessons = JSON.parse(localStorage.getItem('mySchedule')) || [];
+
+    // Ders türlerine özel renk eşleşmesi
+    const colorMap = {
+        'Türkçe': '#e74c3c',
+        'Matematik': '#3498db',
+        'Fen Bilimleri': '#2ecc71',
+        'Sosyal Bilgiler': '#f39c12',
+        'Din Kültürü ve Ahlak Bilgisi': '#9b59b6',
+        'İngilizce': '#1abc9c',
+        'Paragraf': '#e67e22',
+        'T.C. İnkılap Tarihi': '#34495e'
+    };
+
+    window.onload = function() {
+        renderSchedule();
+    };
+
+    function toggleCustomLesson(select) {
+        const customGroup = document.getElementById('customLessonGroup');
+        customGroup.style.display = (select.value === 'custom') ? 'block' : 'none';
+    }
+
+    function getColorForLesson(name) {
+        if (colorMap[name]) return colorMap[name];
+        
+        // Özel eklenen dersler için tutarlı rastgele renk üretme
+        let hash = 0;
+        for (let i = 0; i < name.length; i++) {
+            hash = name.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return `hsl(${Math.abs(hash) % 360}, 65%, 65%)`;
+    }
+
+    function addLesson() {
+        const select = document.getElementById('lessonSelect');
+        let name = select.value;
+        
+        if (name === 'custom') {
+            name = document.getElementById('customLessonInput').value.trim();
+            if (!name) {
+                alert("Lütfen özel ders adını giriniz.");
+                return;
+            }
+        }
+
+        const day = document.getElementById('daySelect').value;
+        const start = document.getElementById('startTime').value;
+        const end = document.getElementById('endTime').value;
+
+        if (!start || !end) {
+            alert("Lütfen geçerli başlangıç ve bitiş saatleri girin.");
+            return;
+        }
+
+        if (start >= end) {
+            alert("Bitiş saati başlangıç saatinden sonra olmalıdır!");
+            return;
+        }
+
+        const newLesson = {
+            id: Date.now(),
+            name: name,
+            day: day,
+            start: start,
+            end: end
+        };
+
+        lessons.push(newLesson);
+        saveAndRender();
+        
+        // Temizleme işlemi
+        if (select.value === 'custom') {
+            document.getElementById('customLessonInput').value = '';
+        }
+    }
+
+    function deleteLesson(id) {
+        lessons = lessons.filter(l => l.id !== id);
+        saveAndRender();
+    }
+
+    function clearAll() {
+        if (confirm("Tüm ders programını silmek istediğinize emin misiniz?")) {
+            lessons = [];
+            saveAndRender();
+        }
+    }
+
+    function saveAndRender() {
+        // Saat sırasına göre sırala
+        lessons.sort((a, b) => a.start.localeCompare(b.start));
+        
+        localStorage.setItem('mySchedule', JSON.stringify(lessons));
+        renderSchedule();
+    }
+
+    function renderSchedule() {
+        for (let i = 0; i < 7; i++) {
+            document.getElementById(`day-${i}`).innerHTML = '';
+        }
+
+        lessons.forEach(lesson => {
+            const cell = document.getElementById(`day-${lesson.day}`);
+            if (cell) {
+                const color = getColorForLesson(lesson.name);
+                const lessonDiv = document.createElement('div');
+                lessonDiv.className = 'lesson-item';
+                lessonDiv.style.borderLeftColor = color;
+                lessonDiv.style.backgroundColor = `${color}15`; // Hafif saydam arka plan
+
+                lessonDiv.innerHTML = `
+                    <button class="delete-btn" onclick="deleteLesson(${lesson.id})" title="Sil">&times;</button>
+                    <strong>${lesson.name}</strong>
+                    <span>${lesson.start} - ${lesson.end}</span>
+                `;
+                cell.appendChild(lessonDiv);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

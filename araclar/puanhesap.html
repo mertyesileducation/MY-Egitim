@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Sınav Analiz ve Gelişim Paneli</title>
+    <style>
+        :root {
+            --primary: #4338ca;
+            --primary-light: #e0e7ff;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #06b6d4;
+            --bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .mega-card {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            max-width: 520px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header h2 {
+            color: var(--text-main);
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .grid-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #334155;
+            font-size: 13px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+            background-color: #f8fafc;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--primary);
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(67, 56, 202, 0.12);
+        }
+
+        .error-box {
+            background-color: #fef2f2;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            margin-top: 14px;
+            display: none;
+            border: 1px solid #fecaca;
+            font-weight: 500;
+        }
+
+        /* Görsel İlerleme Çubuğu */
+        .progress-section {
+            margin-top: 22px;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .progress-container {
+            height: 14px;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .progress-bar {
+            height: 100%;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bar-correct { background-color: var(--success); }
+        .bar-wrong { background-color: var(--danger); }
+        .bar-empty { background-color: #94a3b8; }
+
+        /* Ana Sonuç Ekranı */
+        .result-container {
+            margin-top: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .score-hero {
+            background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 14px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .score-hero .title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.85;
+            font-weight: 700;
+        }
+
+        .score-hero .val {
+            font-size: 42px;
+            font-weight: 900;
+            margin: 4px 0;
+            line-height: 1;
+        }
+
+        .score-hero .subtitle {
+            font-size: 13px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.15);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-top: 6px;
+        }
+
+        /* İstatistik Izgarası */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-card .label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .stat-card .value {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: 4px;
+        }
+
+        .negative-net {
+            color: var(--danger) !important;
+        }
+
+        /* Akıllı Tavsiye / Analiz Kutusu */
+        .feedback-box {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 14px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .feedback-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .feedback-text {
+            font-size: 13px;
+            color: #1e1b4b;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="mega-card">
+    <div class="header">
+        <h2>Sınav Analiz & Gelişim Paneli v1.1</h2>
+        <p>Anlık net hesabı, kayıp puan analizi ve performans tavsiyeleri</p>
+    </div>
+    
+    <div class="grid-inputs">
+        <div class="input-group full-width">
+            <label for="toplamSoru">Toplam Soru Sayısı</label>
+            <input type="number" id="toplamSoru" value="20" min="1" oninput="hesapla()">
+        </div>
+
+        <div class="input-group">
+            <label for="dogru">Doğru Sayısı</label>
+            <input type="number" id="dogru" value="0" min="0" oninput="hesapla()">
+        </div>
+
+        <div class="input-group">
+            <label for="yanlis">Yanlış Sayısı</label>
+            <input type="number" id="yanlis" value="0" min="0" oninput="hesapla()">
+        </div>
+
+        <div class="input-group full-width">
+            <label for="goturme">Yanlış-Doğru Götürme Kuralı</label>
+            <select id="goturme" onchange="hesapla()">
+                <option value="3" selected>3 Yanlış 1 Doğruyu Götürür (0.33 Net)</option>
+                <option value="4">4 Yanlış 1 Doğruyu Götürür (0.25 Net)</option>
+                <option value="2">2 Yanlış 1 Doğruyu Götürür (0.50 Net)</option>
+                <option value="0">Yanlış Doğruyu Götürmüyor (0 Net)</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="errorBox" class="error-box"></div>
+
+    <!-- Soru Dağılım Grafiği -->
+    <div class="progress-section">
+        <div class="progress-labels">
+            <span style="color: var(--success)">Doğru: <span id="lblDogru">0</span></span>
+            <span style="color: var(--danger)">Yanlış: <span id="lblYanlis">0</span></span>
+            <span style="color: #64748b">Boş: <span id="lblBos">20</span></span>
+        </div>
+        <div class="progress-container">
+            <div id="barCorrect" class="progress-bar bar-correct" style="width: 0%"></div>
+            <div id="barWrong" class="progress-bar bar-wrong" style="width: 0%"></div>
+            <div id="barEmpty" class="progress-bar bar-empty" style="width: 100%"></div>
+        </div>
+    </div>
+
+    <div class="result-container">
+        <!-- Ana Puan Göstergesi -->
+        <div class="score-hero">
+            <div class="title">Toplam Hesaplanan Puan</div>
+            <div class="val" id="puanVal">0.00</div>
+            <div class="subtitle" id="performansVal">Henüz Veri Girilmedi</div>
+        </div>
+
+        <!-- İstatistik Metrikleri -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="label">Toplam Net</div>
+                <div class="value" id="netVal">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Başarı Yüzdesi</div>
+                <div class="value" id="yuzdeVal">%0</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Kayıp Puan</div>
+                <div class="value" style="color: var(--danger)" id="kayipVal">0</div>
+            </div>
+        </div>
+
+        <!-- Akıllı Gelişim ve Analiz Notu -->
+        <div class="feedback-box">
+            <div class="feedback-title">Gelişim Tavsiyesi & Analiz</div>
+            <div class="feedback-text" id="feedbackText">Değerlendirme almak için sınav sonuçlarınızı yukarıdaki alanlara girin.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function hesapla() {
+        const toplamSoru = parseFloat(document.getElementById('toplamSoru').value) || 0;
+        const dogru = parseFloat(document.getElementById('dogru').value) || 0;
+        const yanlis = parseFloat(document.getElementById('yanlis').value) || 0;
+        const goturme = parseFloat(document.getElementById('goturme').value) || 0;
+
+        const errorBox = document.getElementById('errorBox');
+
+        // Giriş Doğrulama
+        if (toplamSoru <= 0) {
+            showError("Toplam soru sayısı en az 1 olmalıdır.");
+            return;
+        }
+
+        if ((dogru + yanlis) > toplamSoru) {
+            showError("Doğru ve yanlış soru toplamı, toplam soru sayısını aşamaz!");
+            return;
+        }
+
+        errorBox.style.display = 'none';
+
+        // Temel Hesaplamalar
+        const bos = toplamSoru - (dogru + yanlis);
+        
+        // Net Hesabı (Eksi Net Destekli)
+        let net = dogru;
+        if (goturme > 0) {
+            net = dogru - (yanlis / goturme);
+        }
+
+        // Puan ve Katsayı Hesabı
+        const soruBasiPuan = 100 / toplamSoru;
+        const hamPuan = net * soruBasiPuan;
+        const puan = Math.min(100, Math.max(0, hamPuan)); // Gösterim Puanı (0 - 100)
+        
+        const basariYuzdesi = Math.max(0, (net / toplamSoru) * 100);
+        const kayipPuan = (toplamSoru - net) * soruBasiPuan;
+
+        // Metin Güncellemeleri
+        document.getElementById('lblDogru').innerText = dogru;
+        document.getElementById('lblYanlis').innerText = yanlis;
+        document.getElementById('lblBos').innerText = bos;
+
+        const netElement = document.getElementById('netVal');
+        netElement.innerText = net % 1 === 0 ? net : net.toFixed(2);
+        
+        if (net < 0) {
+            netElement.classList.add('negative-net');
+        } else {
+            netElement.classList.remove('negative-net');
+        }
+
+        document.getElementById('yuzdeVal').innerText = "%" + basariYuzdesi.toFixed(1);
+        document.getElementById('kayipVal').innerText = "-" + kayipPuan.toFixed(1);
+        document.getElementById('puanVal').innerText = puan.toFixed(2);
+
+        // Performans ve Akıllı Gelişim Analizi
+        ulastirAnaliz(toplamSoru, dogru, yanlis, bos, net, basariYuzdesi);
+
+        // Grafik Bar Güncelleme
+        document.getElementById('barCorrect').style.width = (dogru / toplamSoru * 100) + "%";
+        document.getElementById('barWrong').style.width = (yanlis / toplamSoru * 100) + "%";
+        document.getElementById('barEmpty').style.width = (bos / toplamSoru * 100) + "%";
+    }
+
+    function ulastirAnaliz(toplam, d, y, b, net, yuzde) {
+        const perfEl = document.getElementById('performansVal');
+        const textEl = document.getElementById('feedbackText');
+
+        let performans = "";
+        let tavsiye = "";
+
+        // Performans Etiketi
+        if (yuzde >= 85) performans = "Mükemmel Seviye";
+        else if (yuzde >= 70) performans = "Yüksek Performans";
+        else if (yuzde >= 50) performans = "Orta Seviye - Geliştirilebilir";
+        else if (yuzde >= 25) performans = "Temel Seviye - Çalışma Gerekli";
+        else performans = "Kritik Seviye";
+
+        perfEl.innerText = performans;
+
+        // Akıllı Tavsiye Üretimi
+        if (net < 0) {
+            tavsiye = "Yanlış sayınız doğrularınızı tamamen eritti. Emin olmadığınız soruları işaretlemek yerine boş bırakmak netlerinizi hemen artıracaktır.";
+        } else if (y > d && d > 0) {
+            tavsiye = "Yanlış sayınız doğru sayınızdan fazla. Konu eksiklerinizi tamamlamadan deneme çözmek yerine soru bankası odaklı çalışmalısınız.";
+        } else if (b > (toplam * 0.4)) {
+            tavsiye = "Boş bıraktığınız soru oranı çok yüksek (% " + ((b/toplam)*100).toFixed(0) + "). Zaman yönetimi veya konu kapsama alanınızı genişletmeye odaklanın.";
+        } else if (y > (toplam * 0.25)) {
+            tavsiye = "Doğru potansiyeliniz var ancak dikkatsizlik veya çeldiriciler nedeniyle yüksek yanlış yapıyorsunuz. Soru analizlerine daha fazla zaman ayırın.";
+        } else if (yuzde >= 85) {
+            tavsiye = "Harika bir başarı! Rutininizi bozmadan soru çözme hızınızı artırmaya ve odaklanmayı korumaya devam edin.";
+        } else {
+            tavsiye = "Dengeli bir dağılım. Yanlış yaptığınız " + y + " sorunun konularına odaklanarak netlerinizi bir üst seviyeye taşıyabilirsiniz.";
+        }
+
+        textEl.innerText = tavsiye;
+    }
+
+    function showError(msg) {
+        const errorBox = document.getElementById('errorBox');
+        errorBox.innerText = msg;
+        errorBox.style.display = 'block';
+    }
+
+    // İlk çalıştırma
+    hesapla();
+</script>
+
+</body>
+</html>
