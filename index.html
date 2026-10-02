@@ -3,16 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="6. Sınıf, 7. Sınıf, 5. Sınıf ve 3. Sınıf için ders notları, konu anlatımları, testler ve yazılıya hazırlık örnekleri.">
-<meta name="theme-color" content="#1e3a8a">
+<meta name="description" content="3, 5, 6 ve 7. sınıflar için ders notları, konu anlatımları, testler, Maarif Modeli içerikleri ve yazılıya hazırlık örnekleri. MERT AI eğitim asistanı ve ücretsiz ders araçları.">
+<meta name="keywords" content="ders notları, yazılı örnekleri, 6. sınıf, 7. sınıf, 5. sınıf, 3. sınıf, maarif modeli, konu anlatımı, test, MERT AI">
+<meta name="author" content="Mert Yeşil">
+<meta name="theme-color" content="#1e3a8a" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+<meta name="msvalidate.01" content="4CDAB2EF53D8ACE0AD81A5FC4C48B3BE" />
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="MERT YEŞİL Eğitim Portalı">
+<meta property="og:description" content="Ders notları, konu anlatımları, testler ve yazılı örnekleri tek yerde.">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<meta name="msvalidate.01" content="4CDAB2EF53D8ACE0AD81A5FC4C48B3BE" />
 
 <title>MERT YEŞİL Eğitim Portalı</title>
 
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"EducationalOrganization",
+  "name":"MERT YEŞİL Eğitim Portalı",
+  "description":"3, 5, 6 ve 7. sınıflar için ders notları, konu anlatımları, testler ve yazılı örnekleri.",
+  "inLanguage":"tr"
+}
+</script>
+
+<script>
+/* Tema, sayfa çizilmeden önce uygulanır (yanıp sönmeyi önler) */
+(function(){
+  try{
+    var t = localStorage.getItem("tema");
+    if(t === "dark" || t === "light"){ document.documentElement.setAttribute("data-theme", t); }
+  }catch(e){}
+})();
+</script>
+
 <style>
+/* ========== TEMA DEĞİŞKENLERİ ========== */
+:root{
+--bg1:#eef2ff;
+--bg2:#f8fafc;
+--surface:#ffffff;
+--surface-2:#f8fafc;
+--surface-3:#f1f5f9;
+--border:#e2e8f0;
+--border-strong:#cbd5e1;
+--text:#0f172a;
+--text-2:#334155;
+--muted:#64748b;
+--primary:#2563eb;
+--primary-dark:#1e3a8a;
+--primary-soft:#eff6ff;
+--primary-border:#bfdbfe;
+--accent:#0ea5e9;
+--success:#16a34a;
+--warning:#d97706;
+--shadow-sm:0 6px 14px rgba(15,23,42,0.05);
+--shadow-md:0 14px 30px rgba(30,58,138,0.14);
+--shadow-lg:0 22px 50px rgba(15,23,42,0.14);
+--radius:16px;
+--header-h:68px;
+color-scheme:light;
+}
+
+@media (prefers-color-scheme: dark){
+:root:not([data-theme="light"]){
+--bg1:#0b1220;
+--bg2:#0f172a;
+--surface:#111a2e;
+--surface-2:#0f1729;
+--surface-3:#1a2540;
+--border:#22304d;
+--border-strong:#334366;
+--text:#e2e8f0;
+--text-2:#cbd5e1;
+--muted:#94a3b8;
+--primary:#60a5fa;
+--primary-dark:#93c5fd;
+--primary-soft:#13213d;
+--primary-border:#2b4a80;
+--accent:#38bdf8;
+--success:#4ade80;
+--warning:#fbbf24;
+--shadow-sm:0 6px 14px rgba(0,0,0,0.25);
+--shadow-md:0 14px 30px rgba(0,0,0,0.4);
+--shadow-lg:0 22px 50px rgba(0,0,0,0.45);
+color-scheme:dark;
+}
+}
+
+:root[data-theme="dark"]{
+--bg1:#0b1220;
+--bg2:#0f172a;
+--surface:#111a2e;
+--surface-2:#0f1729;
+--surface-3:#1a2540;
+--border:#22304d;
+--border-strong:#334366;
+--text:#e2e8f0;
+--text-2:#cbd5e1;
+--muted:#94a3b8;
+--primary:#60a5fa;
+--primary-dark:#93c5fd;
+--primary-soft:#13213d;
+--primary-border:#2b4a80;
+--accent:#38bdf8;
+--success:#4ade80;
+--warning:#fbbf24;
+--shadow-sm:0 6px 14px rgba(0,0,0,0.25);
+--shadow-md:0 14px 30px rgba(0,0,0,0.4);
+--shadow-lg:0 22px 50px rgba(0,0,0,0.45);
+color-scheme:dark;
+}
+
+/* ========== TEMEL ========== */
 *{
 margin:0;
 padding:0;
@@ -20,96 +129,389 @@ box-sizing:border-box;
 font-family:'Poppins',Arial,sans-serif;
 }
 
-body{
-background:linear-gradient(135deg,#eef2ff,#f8fafc);
-color:#0f172a;
+html{
+scroll-behavior:smooth;
+scroll-padding-top:calc(var(--header-h) + 16px);
 }
 
+body{
+background:linear-gradient(135deg,var(--bg1),var(--bg2));
+background-attachment:fixed;
+color:var(--text);
+min-height:100vh;
+transition:background .3s ease,color .3s ease;
+}
+
+a{color:inherit;}
+
+:focus-visible{
+outline:3px solid var(--accent);
+outline-offset:2px;
+border-radius:8px;
+}
+
+.sr-only{
+position:absolute;
+width:1px;height:1px;
+padding:0;margin:-1px;
+overflow:hidden;clip:rect(0,0,0,0);
+white-space:nowrap;border:0;
+}
+
+.atla-link{
+position:absolute;
+left:12px;
+top:-60px;
+background:var(--primary);
+color:white;
+padding:10px 16px;
+border-radius:10px;
+font-weight:700;
+z-index:10000;
+text-decoration:none;
+transition:top .2s;
+}
+.atla-link:focus{top:12px;}
+
+/* ========== ÜST MENÜ ========== */
 header{
+position:sticky;
+top:0;
+z-index:900;
 background:linear-gradient(135deg,#1e3a8a,#2563eb);
 color:white;
-padding:16px;
 box-shadow:0 6px 18px rgba(30,58,138,0.25);
 }
 
 .menu{
 max-width:1100px;
 margin:auto;
+min-height:var(--header-h);
+padding:10px 16px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-flex-wrap:wrap;
+gap:12px;
 }
 
 .logo{
-font-size:23px;
+display:flex;
+align-items:center;
+gap:10px;
+font-size:21px;
 font-weight:800;
 letter-spacing:.3px;
+color:white;
+text-decoration:none;
+white-space:nowrap;
+}
+
+.logo-ikon{
+width:38px;height:38px;
+border-radius:11px;
+background:rgba(255,255,255,0.16);
+border:1px solid rgba(255,255,255,0.25);
+display:flex;align-items:center;justify-content:center;
+font-size:20px;
+}
+
+.logo small{
+display:block;
+font-size:11px;
+font-weight:500;
+opacity:.8;
+letter-spacing:.4px;
+margin-top:-3px;
 }
 
 .nav{
 display:flex;
 align-items:center;
-gap:14px;
-flex-wrap:wrap;
+gap:4px;
 }
 
 .nav a{
 color:white;
 text-decoration:none;
 font-weight:600;
-font-size:14px;
+font-size:13.5px;
+padding:8px 10px;
+border-radius:10px;
+transition:background .2s;
+white-space:nowrap;
 }
 
-.nav a:hover{
-opacity:0.8;
-}
-
-.site-stats{
+.nav a:hover,
+.nav a[aria-current="page"]{
 background:rgba(255,255,255,0.15);
-padding:7px 12px;
-border-radius:999px;
-font-size:13px;
-font-weight:700;
 }
 
-.container{
-max-width:1000px;
+.etiket-yeni{
+display:inline-block;
+font-size:9.5px;
+font-weight:800;
+background:#facc15;
+color:#422006;
+padding:1px 6px;
+border-radius:999px;
+margin-left:4px;
+vertical-align:2px;
+letter-spacing:.3px;
+}
+
+.menu-sag{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.ikon-buton{
+width:40px;height:40px;
+border-radius:11px;
+border:1px solid rgba(255,255,255,0.25);
+background:rgba(255,255,255,0.12);
+color:white;
+font-size:18px;
+cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+transition:background .2s,transform .15s;
+}
+.ikon-buton:hover{background:rgba(255,255,255,0.22);}
+.ikon-buton:active{transform:scale(.94);}
+
+#menuButon{display:none;}
+
+/* ========== İÇERİK ========== */
+main{
+max-width:1040px;
 margin:auto;
-margin-top:24px;
-background:white;
-padding:24px;
-border-radius:20px;
-box-shadow:0 18px 45px rgba(15,23,42,0.12);
+padding:24px 16px 40px;
+}
+
+/* ========== HERO ========== */
+.hero{
+position:relative;
+overflow:hidden;
+background:linear-gradient(135deg,#1e3a8a,#2563eb 55%,#0ea5e9);
+color:white;
+border-radius:24px;
+padding:34px 30px 30px;
+box-shadow:var(--shadow-lg);
+}
+
+.hero::before,
+.hero::after{
+content:"";
+position:absolute;
+border-radius:50%;
+background:rgba(255,255,255,0.08);
+pointer-events:none;
+}
+.hero::before{width:320px;height:320px;right:-90px;top:-120px;}
+.hero::after{width:200px;height:200px;right:120px;bottom:-110px;}
+
+.hero-icerik{position:relative;z-index:1;}
+
+.hero-rozet{
+display:inline-flex;
+align-items:center;
+gap:7px;
+background:rgba(255,255,255,0.16);
+border:1px solid rgba(255,255,255,0.25);
+padding:6px 13px;
+border-radius:999px;
+font-size:12.5px;
+font-weight:700;
+margin-bottom:14px;
 }
 
 .mainTitle{
-font-size:28px;
+font-size:34px;
 font-weight:900;
-color:#1e3a8a;
+line-height:1.15;
 margin-bottom:8px;
+letter-spacing:-.3px;
 }
 
 .altBaslik{
-color:#64748b;
-margin-bottom:18px;
-font-size:15px;
+font-size:15.5px;
+opacity:.92;
+max-width:620px;
+line-height:1.6;
 }
 
-.news-section{
+/* Arama */
+.arama-kutu{
+margin-top:22px;
+position:relative;
+max-width:620px;
+}
+
+.arama-kutu .arama-ikon{
+position:absolute;
+left:16px;top:50%;
+transform:translateY(-50%);
+font-size:17px;
+pointer-events:none;
+}
+
+#arama{
+width:100%;
+padding:15px 92px 15px 46px;
+border-radius:14px;
+border:2px solid transparent;
+background:white;
+color:#0f172a;
+font-size:15px;
+font-weight:500;
+box-shadow:0 12px 28px rgba(15,23,42,0.22);
+transition:border-color .2s;
+}
+#arama::placeholder{color:#94a3b8;}
+#arama:focus{outline:none;border-color:#7dd3fc;}
+
+.kisayol{
+position:absolute;
+right:12px;top:50%;
+transform:translateY(-50%);
+font-size:11.5px;
+font-weight:700;
+color:#64748b;
+background:#f1f5f9;
+border:1px solid #e2e8f0;
+padding:3px 8px;
+border-radius:7px;
+}
+
+#aramaTemizle{
+position:absolute;
+right:10px;top:50%;
+transform:translateY(-50%);
+border:none;
+background:#f1f5f9;
+color:#334155;
+width:30px;height:30px;
+border-radius:9px;
+cursor:pointer;
+font-size:15px;
+display:none;
+}
+
+/* Hızlı erişim */
+.hizli-erisim{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:18px;
+}
+
+.hizli-erisim a{
+display:inline-flex;
+align-items:center;
+gap:8px;
+background:rgba(255,255,255,0.14);
+border:1px solid rgba(255,255,255,0.28);
+color:white;
+text-decoration:none;
+font-weight:700;
+font-size:13.5px;
+padding:9px 14px;
+border-radius:12px;
+transition:background .2s,transform .15s;
+}
+.hizli-erisim a:hover{background:rgba(255,255,255,0.24);transform:translateY(-2px);}
+
+/* İstatistikler */
+.istatistikler{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+margin-top:18px;
+}
+
+.istatistik{
+background:var(--surface);
+border:1px solid var(--border);
+border-radius:var(--radius);
+padding:16px;
+box-shadow:var(--shadow-sm);
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.istatistik .ist-ikon{
+width:42px;height:42px;
+flex:0 0 auto;
+border-radius:12px;
+background:var(--primary-soft);
+display:flex;align-items:center;justify-content:center;
+font-size:20px;
+}
+
+.istatistik strong{
+display:block;
+font-size:20px;
+font-weight:800;
+color:var(--primary-dark);
+line-height:1.1;
+}
+
+.istatistik span{
+font-size:12.5px;
+color:var(--muted);
+}
+
+/* ========== KUTU / BÖLÜMLER ========== */
+.container{
 margin-top:20px;
-background:linear-gradient(135deg,#eff6ff,#ffffff);
-border:1px solid #dbeafe;
-border-radius:16px;
+background:var(--surface);
+padding:22px;
+border-radius:22px;
+box-shadow:var(--shadow-lg);
+border:1px solid var(--border);
+}
+
+.bolum-baslik{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:14px;
+}
+
+.news-title,
+.class-title{
+font-size:19px;
+font-weight:800;
+color:var(--text);
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.news-title{color:var(--primary-dark);}
+
+/* Haberler */
+.news-section{
+background:linear-gradient(135deg,var(--primary-soft),var(--surface));
+border:1px solid var(--primary-border);
+border-radius:var(--radius);
 padding:18px;
 }
 
-.news-title{
-font-size:19px;
-font-weight:800;
-color:#1e3a8a;
-margin-bottom:14px;
+.duyuru-tekrar{
+border:1px solid var(--primary-border);
+background:var(--surface);
+color:var(--primary);
+font-weight:700;
+font-size:12.5px;
+padding:6px 12px;
+border-radius:10px;
+cursor:pointer;
 }
+.duyuru-tekrar:hover{background:var(--primary-soft);}
 
 .news-grid{
 display:grid;
@@ -118,47 +520,92 @@ gap:12px;
 }
 
 .news-card{
-background:white;
-border:1px solid #e2e8f0;
+background:var(--surface);
+border:1px solid var(--border);
 border-radius:14px;
 padding:15px;
-box-shadow:0 8px 18px rgba(15,23,42,0.06);
+box-shadow:var(--shadow-sm);
+border-top:3px solid var(--primary);
 }
 
-.news-card span{
+.news-card.bilgi{border-top-color:var(--warning);}
+
+.news-card .haber-etiket{
 display:inline-block;
-font-size:12px;
+font-size:11.5px;
 font-weight:800;
-color:#2563eb;
-margin-bottom:7px;
+color:var(--primary);
+background:var(--primary-soft);
+padding:3px 9px;
+border-radius:999px;
+margin-bottom:8px;
+}
+
+.news-card.bilgi .haber-etiket{
+color:var(--warning);
+background:rgba(217,119,6,0.12);
 }
 
 .news-card h3{
-font-size:15px;
-color:#0f172a;
+font-size:14.5px;
+color:var(--text);
 margin-bottom:6px;
+line-height:1.4;
 }
 
 .news-card p{
 font-size:13px;
-color:#64748b;
-line-height:1.5;
+color:var(--muted);
+line-height:1.55;
+}
+
+/* Filtre çipleri */
+.filtreler{
+position:sticky;
+top:calc(var(--header-h) + 8px);
+z-index:50;
+margin-top:20px;
+display:flex;
+gap:8px;
+overflow-x:auto;
+padding:8px;
+background:var(--surface);
+border:1px solid var(--border);
+border-radius:14px;
+box-shadow:var(--shadow-sm);
+scrollbar-width:none;
+}
+.filtreler::-webkit-scrollbar{display:none;}
+
+.filtre{
+flex:0 0 auto;
+border:1px solid var(--border);
+background:var(--surface-2);
+color:var(--text-2);
+font-weight:700;
+font-size:13px;
+padding:8px 14px;
+border-radius:10px;
+cursor:pointer;
+transition:all .2s;
+}
+.filtre:hover{border-color:var(--primary-border);color:var(--primary);}
+.filtre[aria-pressed="true"]{
+background:linear-gradient(135deg,#1e3a8a,#2563eb);
+color:white;
+border-color:transparent;
+box-shadow:0 6px 14px rgba(37,99,235,0.3);
 }
 
 .class-section{
 margin-top:20px;
-background:#f8fafc;
-border-radius:16px;
+background:var(--surface-2);
+border-radius:var(--radius);
 padding:17px;
-border:1px solid #e2e8f0;
+border:1px solid var(--border);
 }
 
-.class-title{
-font-size:19px;
-font-weight:800;
-margin-bottom:14px;
-color:#0f172a;
-}
+.class-section[hidden]{display:none;}
 
 .lesson-grid{
 display:grid;
@@ -167,88 +614,210 @@ gap:13px;
 }
 
 .lesson{
-background:white;
+position:relative;
+background:var(--surface);
 border-radius:14px;
-padding:17px;
-border:1px solid #e5e7eb;
+padding:16px;
+border:1px solid var(--border);
 text-decoration:none;
-transition:0.25s;
-box-shadow:0 6px 14px rgba(15,23,42,0.04);
-display:block;
+transition:transform .25s,box-shadow .25s,border-color .25s;
+box-shadow:var(--shadow-sm);
+display:flex;
+align-items:flex-start;
+gap:13px;
 }
+
+.lesson[hidden]{display:none;}
 
 .lesson:hover{
 transform:translateY(-4px);
-box-shadow:0 14px 26px rgba(30,58,138,0.15);
-border-color:#bfdbfe;
+box-shadow:var(--shadow-md);
+border-color:var(--primary-border);
 }
 
+.ders-ikon{
+flex:0 0 auto;
+width:44px;height:44px;
+border-radius:12px;
+display:flex;align-items:center;justify-content:center;
+font-size:21px;
+background:var(--ikon-bg,var(--primary-soft));
+}
+
+.ders-metin{min-width:0;flex:1;}
+
 .lesson h3{
-color:#1e3a8a;
-font-size:16px;
-margin-bottom:5px;
+color:var(--primary-dark);
+font-size:15.5px;
+margin-bottom:4px;
+line-height:1.35;
 }
 
 .lesson p{
-font-size:13px;
-color:#64748b;
-line-height:1.4;
+font-size:12.8px;
+color:var(--muted);
+line-height:1.45;
 }
+
+.lesson .ok{
+align-self:center;
+color:var(--muted);
+font-size:18px;
+transition:transform .2s,color .2s;
+}
+.lesson:hover .ok{transform:translateX(4px);color:var(--primary);}
+
+.rozet{
+display:inline-block;
+font-size:10.5px;
+font-weight:800;
+padding:2px 8px;
+border-radius:999px;
+margin-left:4px;
+vertical-align:2px;
+letter-spacing:.2px;
+}
+.rozet.maarif{background:rgba(22,163,74,0.14);color:var(--success);}
+.rozet.yeni{background:#facc15;color:#422006;}
+.rozet.yakinda-rozet{background:var(--surface-3);color:var(--muted);border:1px solid var(--border);}
+
+/* Ders renkleri */
+.ders-turkce{--ikon-bg:rgba(239,68,68,0.13);}
+.ders-mat{--ikon-bg:rgba(37,99,235,0.14);}
+.ders-fen{--ikon-bg:rgba(22,163,74,0.14);}
+.ders-sosyal{--ikon-bg:rgba(217,119,6,0.15);}
+.ders-din{--ikon-bg:rgba(13,148,136,0.15);}
+.ders-ing{--ikon-bg:rgba(147,51,234,0.14);}
+.ders-hayat{--ikon-bg:rgba(234,179,8,0.18);}
+.ders-sinav{--ikon-bg:rgba(14,165,233,0.15);}
+.ders-kamp{--ikon-bg:rgba(244,63,94,0.13);}
+.ders-yazili{--ikon-bg:rgba(6,182,212,0.15);}
 
 .yazili{
-background:linear-gradient(135deg,#ecfeff,#f0f9ff);
-border:1px solid #67e8f9;
+background:linear-gradient(135deg,rgba(6,182,212,0.08),rgba(14,165,233,0.06));
+border:1px solid rgba(6,182,212,0.45);
 }
 
-/* Yakında (henüz yayınlanmamış) dersler için stil */
+/* Yakında (henüz yayınlanmamış) dersler */
 .lesson.yakinda{
 pointer-events:none;
 cursor:default;
-opacity:0.55;
-background:#f1f5f9;
+opacity:0.6;
+background:var(--surface-3);
 box-shadow:none;
+filter:grayscale(.5);
+}
+.lesson.yakinda .ok{display:none;}
+
+/* Sonuç yok */
+#sonucYok{
+display:none;
+margin-top:20px;
+text-align:center;
+padding:34px 16px;
+border:2px dashed var(--border-strong);
+border-radius:var(--radius);
+color:var(--muted);
+}
+#sonucYok .buyuk{font-size:38px;margin-bottom:8px;}
+#sonucYok strong{display:block;color:var(--text);font-size:16px;margin-bottom:4px;}
+
+mark{
+background:rgba(250,204,21,0.45);
+color:inherit;
+border-radius:4px;
+padding:0 2px;
 }
 
-.lesson.yakinda:hover{
-transform:none;
-box-shadow:none;
-border-color:#e5e7eb;
-}
-
+/* ========== FOOTER ========== */
 .footer{
-margin-top:24px;
+margin-top:28px;
+padding:22px 16px;
+border-top:1px solid var(--border);
 text-align:center;
 font-size:13px;
-color:#64748b;
+color:var(--muted);
 }
 
-/* DUYURU */
+.footer-linkler{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:6px 18px;
+margin-bottom:10px;
+}
 
+.footer-linkler a{
+color:var(--text-2);
+text-decoration:none;
+font-weight:600;
+}
+.footer-linkler a:hover{color:var(--primary);}
+
+/* Yukarı çık */
+#yukariButon{
+position:fixed;
+right:18px;
+bottom:18px;
+width:46px;height:46px;
+border-radius:14px;
+border:none;
+background:linear-gradient(135deg,#1e3a8a,#2563eb);
+color:white;
+font-size:20px;
+cursor:pointer;
+box-shadow:0 10px 24px rgba(37,99,235,0.4);
+opacity:0;
+visibility:hidden;
+transform:translateY(10px);
+transition:opacity .25s,transform .25s,visibility .25s;
+z-index:800;
+}
+#yukariButon.goster{opacity:1;visibility:visible;transform:translateY(0);}
+
+/* ========== DUYURU ========== */
 #duyuruArka{
 position:fixed;
 inset:0;
 background:rgba(15,23,42,0.72);
 backdrop-filter:blur(8px);
-display:flex;
+-webkit-backdrop-filter:blur(8px);
+display:none;
 align-items:center;
 justify-content:center;
 z-index:9999;
 padding:20px;
 }
 
+#duyuruArka.acik{display:flex;}
+
 #duyuruKutu{
 position:relative;
-background:linear-gradient(180deg,#ffffff,#f8faff);
+background:var(--surface);
 width:100%;
-max-width:430px;
-padding:0;
+max-width:440px;
+max-height:calc(100vh - 40px);
+overflow-y:auto;
 border-radius:24px;
 text-align:center;
 box-shadow:0 30px 70px rgba(15,23,42,0.35);
 animation:duyuruAc .3s cubic-bezier(.2,.8,.2,1);
-overflow:hidden;
-border:1px solid #e0e7ff;
+border:1px solid var(--border);
 }
+
+#duyuruKapatX{
+position:absolute;
+top:12px;right:12px;
+width:34px;height:34px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,0.3);
+background:rgba(255,255,255,0.15);
+color:white;
+font-size:16px;
+cursor:pointer;
+z-index:2;
+}
+#duyuruKapatX:hover{background:rgba(255,255,255,0.28);}
 
 .duyuru-ust{
 background:linear-gradient(135deg,#1e3a8a,#2563eb 55%,#0ea5e9);
@@ -270,12 +839,11 @@ margin-bottom:12px;
 border:1px solid rgba(255,255,255,0.25);
 }
 
-.duyuru-rozet .nokta{
+.nokta{
 width:7px;
 height:7px;
 border-radius:50%;
 background:#4ade80;
-box-shadow:0 0 0 0 rgba(74,222,128,.6);
 animation:nabiz 1.8s infinite;
 }
 
@@ -287,17 +855,17 @@ animation:nabiz 1.8s infinite;
 
 #duyuruKutu h2{
 color:white;
-font-size:22px;
+font-size:21px;
 font-weight:800;
 line-height:1.3;
 }
 
 .duyuru-govde{
-padding:22px 26px 28px;
+padding:22px 24px 6px;
 }
 
-#duyuruKutu p.duyuru-metin{
-color:#475569;
+.duyuru-metin{
+color:var(--text-2);
 font-size:14px;
 line-height:1.65;
 text-align:left;
@@ -306,7 +874,7 @@ text-align:left;
 .ozellik-listesi{
 list-style:none;
 text-align:left;
-margin:18px 0 4px;
+margin:16px 0 4px;
 display:flex;
 flex-direction:column;
 gap:10px;
@@ -317,9 +885,9 @@ display:flex;
 align-items:flex-start;
 gap:11px;
 font-size:13.5px;
-color:#1e293b;
-background:#f1f5ff;
-border:1px solid #e0e7ff;
+color:var(--text);
+background:var(--primary-soft);
+border:1px solid var(--primary-border);
 border-radius:12px;
 padding:10px 12px;
 }
@@ -334,24 +902,27 @@ align-items:center;
 justify-content:center;
 font-size:15px;
 background:linear-gradient(135deg,#2563eb,#0ea5e9);
-color:white;
 }
 
 .ozellik-listesi strong{
 display:block;
 font-size:13.5px;
-color:#0f172a;
+color:var(--text);
 }
 
-.ozellik-listesi span.aciklama{
+.ozellik-listesi .aciklama{
 display:block;
 font-size:12px;
-color:#64748b;
-margin-top:1px;
+color:var(--muted);
+margin-top:2px;
+line-height:1.5;
+}
+
+.duyuru-alt{
+padding:14px 24px 24px;
 }
 
 #duyuruButon{
-margin-top:20px;
 width:100%;
 background:linear-gradient(135deg,#1e3a8a,#2563eb);
 color:white;
@@ -362,7 +933,7 @@ cursor:pointer;
 font-weight:700;
 font-size:14.5px;
 box-shadow:0 10px 22px rgba(37,99,235,0.3);
-transition:transform .15s ease, box-shadow .15s ease;
+transition:transform .15s ease,box-shadow .15s ease;
 }
 
 #duyuruButon:hover{
@@ -370,367 +941,713 @@ transform:translateY(-2px);
 box-shadow:0 14px 28px rgba(37,99,235,0.38);
 }
 
+.tekrar-gosterme{
+display:inline-flex;
+align-items:center;
+gap:7px;
+margin-top:12px;
+font-size:12.5px;
+color:var(--muted);
+cursor:pointer;
+user-select:none;
+}
+.tekrar-gosterme input{accent-color:var(--primary);width:15px;height:15px;cursor:pointer;}
+
 @keyframes duyuruAc{
-from{
-opacity:0;
-transform:scale(.94) translateY(8px);
+from{opacity:0;transform:scale(.94) translateY(8px);}
+to{opacity:1;transform:scale(1) translateY(0);}
 }
-to{
-opacity:1;
-transform:scale(1) translateY(0);
+
+/* Kartların görünüme girişi */
+.gir{opacity:0;transform:translateY(14px);}
+.gir.gorundu{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease;}
+
+/* ========== DUYARLI ========== */
+@media(max-width:960px){
+#menuButon{display:flex;}
+
+.nav{
+position:absolute;
+top:100%;
+left:0;right:0;
+flex-direction:column;
+align-items:stretch;
+gap:2px;
+padding:10px 16px 16px;
+background:linear-gradient(180deg,#1e3a8a,#1d4ed8);
+box-shadow:0 18px 30px rgba(15,23,42,0.3);
+display:none;
 }
+.nav.acik{display:flex;}
+.nav a{padding:12px 14px;font-size:14.5px;}
 }
 
 @media(max-width:800px){
 .lesson-grid,
-.news-grid{
-grid-template-columns:repeat(2,1fr);
-}
+.news-grid{grid-template-columns:repeat(2,1fr);}
+.istatistikler{grid-template-columns:repeat(2,1fr);}
+.mainTitle{font-size:28px;}
 }
 
-@media(max-width:500px){
+@media(max-width:540px){
 .lesson-grid,
-.news-grid{
-grid-template-columns:1fr;
+.news-grid{grid-template-columns:1fr;}
+
+main{padding:16px 12px 32px;}
+.hero{padding:26px 20px 22px;border-radius:20px;}
+.mainTitle{font-size:24px;}
+.altBaslik{font-size:14px;}
+.container{padding:16px;border-radius:18px;}
+.class-section,.news-section{padding:14px;}
+.kisayol{display:none;}
+#arama{padding-right:48px;}
+.logo{font-size:18px;}
+.logo small{display:none;}
+.istatistik{padding:12px;}
+.istatistik strong{font-size:17px;}
 }
 
-.nav{
-width:100%;
-justify-content:center;
-margin-top:10px;
+@media (prefers-reduced-motion: reduce){
+*,*::before,*::after{
+animation-duration:.01ms !important;
+animation-iteration-count:1 !important;
+transition-duration:.01ms !important;
+scroll-behavior:auto !important;
+}
+.gir{opacity:1;transform:none;}
 }
 
-.mainTitle{
-font-size:24px;
-}
+@media print{
+header,#yukariButon,.filtreler,.hero .arama-kutu,.hizli-erisim,#duyuruArka{display:none !important;}
+body{background:white;}
 }
 </style>
 </head>
 
 <body>
 
-<div id="duyuruArka" role="dialog" aria-modal="true" aria-labelledby="duyuruBaslik" style="display:none;">
+<a class="atla-link" href="#dersler">İçeriğe atla</a>
+
+<!-- ========== DUYURU PENCERESİ ========== -->
+<div id="duyuruArka" role="dialog" aria-modal="true" aria-labelledby="duyuruBaslik" aria-describedby="duyuruMetin">
   <div id="duyuruKutu">
+    <button id="duyuruKapatX" type="button" aria-label="Duyuruyu kapat">✕</button>
     <div class="duyuru-ust">
-      <div class="duyuru-rozet"><span class="nokta"></span> Çok yakında</div>
+      <div class="duyuru-rozet"><span class="nokta"></span> Yeni dönem başladı</div>
       <h2 id="duyuruBaslik">Eğitim Portalımız yeni bir döneme giriyor 🚀</h2>
     </div>
     <div class="duyuru-govde">
-      <p class="duyuru-metin">
-        3. sınıf ve 7. sınıf (2026-2027 öğretim yılı) Maarif Model içerikleri yayında! 
-		  Üstelik portalda çok daha fazlası var:
+      <p class="duyuru-metin" id="duyuruMetin">
+        3. sınıf ve 7. sınıf (2026-2027 öğretim yılı) Maarif Modeli içerikleri yayında!
+        Üstelik portalda çok daha fazlası var:
       </p>
 
       <ul class="ozellik-listesi">
         <li>
-          <span class="ikon">✨</span>
+          <span class="ikon" aria-hidden="true">✨</span>
           <span>
-            <strong>Mert AI entegrasyonu (Yeni)</strong>
-            <span class="aciklama">Sorularını anında yanıtlayan, konu anlatımını sana özel açıklayan yapay zekâ asistanı yakında burada. 10.09.2026 tarihinde v3.0 hizmetinize girmiştir.</span>
+            <strong>MERT AI v5.0 (Güncellendi)</strong>
+            <span class="aciklama">Sorularını anında yanıtlayan, konu anlatımını sana özel açıklayan yapay zekâ asistanı 02.10.2026 itibarıyla yeni v5.0 sürümüyle hizmetinizde.</span>
           </span>
         </li>
         <li>
-          <span class="ikon">📱</span>
+          <span class="ikon" aria-hidden="true">📱</span>
           <span>
             <strong>Mobil Erişilebilirlik (Yeni)</strong>
-            <span class="aciklama">Tüm ders notları, testler ve yazılı örnekleri artık webde mobil uyumlu!</span>
+            <span class="aciklama">Tüm ders notları, testler ve yazılı örnekleri artık mobil uyumlu!</span>
           </span>
         </li>
         <li>
-          <span class="ikon">📅</span>
+          <span class="ikon" aria-hidden="true">📅</span>
           <span>
             <strong>Ders Araçları (Yeni)</strong>
-            <span class="aciklama">Sınav sonucu hesaplayıcı, ders programı oluşturucu ve soru çözüm hızı analizi sistemeleri hizmetinizde!</span>
+            <span class="aciklama">Sınav sonucu hesaplayıcı, ders programı oluşturucu ve soru çözüm hızı analizi sistemleri hizmetinizde!</span>
           </span>
         </li>
       </ul>
     </div>
-    <div style="padding:0 26px 26px;">
-      <button id="duyuruButon" onclick="duyuruKapat()" aria-label="Duyuruyu kapat">Harika, devam edeyim</button>
+    <div class="duyuru-alt">
+      <button id="duyuruButon" type="button">Harika, devam edeyim</button>
+      <label class="tekrar-gosterme">
+        <input type="checkbox" id="tekrarGosterme" checked>
+        Bu duyuruyu tekrar gösterme
+      </label>
     </div>
   </div>
 </div>
 
+<!-- ========== ÜST MENÜ ========== -->
 <header>
 <div class="menu">
 
-<div class="logo">
-📚 MERT YEŞİL
-</div>
+<a class="logo" href="#" aria-label="MERT YEŞİL Eğitim Portalı ana sayfa">
+<span class="logo-ikon" aria-hidden="true">📚</span>
+<span>MERT YEŞİL<small>Eğitim Portalı</small></span>
+</a>
 
-<div class="nav">
-<a href="#">Ana Sayfa</a>
+<div class="menu-sag">
+<nav class="nav" id="anaMenu" aria-label="Ana menü">
+<a href="#" aria-current="page">Ana Sayfa</a>
 <a href="hakkimizda.html">Hakkımızda</a>
 <a href="/araclar/">Ders Araçları</a>
-<a href="ai.html">MERT Aİ(Yeni)</a>
-<a href="/dersler/akillitahta.html">Akıllı Tahta(Yeni)</a>
+<a href="ai.html">MERT AI<span class="etiket-yeni">YENİ</span></a>
+<a href="/dersler/akillitahta.html">Akıllı Tahta<span class="etiket-yeni">YENİ</span></a>
 <a href="gizlilik.html">Gizlilik Politikası</a>
 <a href="iletisim.html">İletişim</a>
+</nav>
 
-<span class="site-stats">
-📊 125'ten fazla içerik
-</span>
+<button class="ikon-buton" id="temaButon" type="button" aria-label="Koyu temaya geç" title="Tema değiştir">🌙</button>
+<button class="ikon-buton" id="menuButon" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="anaMenu">☰</button>
 </div>
 
 </div>
 </header>
 
+<main>
+
+<!-- ========== HERO ========== -->
+<section class="hero" aria-labelledby="anaBaslik">
+<div class="hero-icerik">
+<div class="hero-rozet"><span class="nokta"></span> 2026-2027 Maarif Modeli içerikleri yayında</div>
+<h1 class="mainTitle" id="anaBaslik">MERT YEŞİL EĞİTİM PORTALI</h1>
+<p class="altBaslik">Ders notları, konu anlatımları, testler ve yazılı örnekleri — 3, 5, 6 ve 7. sınıflar için tek yerde, ücretsiz.</p>
+
+<div class="arama-kutu" role="search">
+<span class="arama-ikon" aria-hidden="true">🔍</span>
+<label for="arama" class="sr-only">Ders veya içerik ara</label>
+<input type="search" id="arama" placeholder="Ders ara… (ör. fen, matematik, yazılı)" autocomplete="off">
+<span class="kisayol" id="kisayol" aria-hidden="true">/</span>
+<button type="button" id="aramaTemizle" aria-label="Aramayı temizle">✕</button>
+</div>
+
+<div class="hizli-erisim">
+<a href="ai.html"><span aria-hidden="true">🤖</span> MERT AI'a sor</a>
+<a href="/araclar/"><span aria-hidden="true">🧮</span> Ders Araçları</a>
+<a href="/dersler/akillitahta.html"><span aria-hidden="true">🖥️</span> Akıllı Tahta</a>
+<a href="#yazililar"><span aria-hidden="true">📝</span> Yazılılar</a>
+</div>
+</div>
+</section>
+
+<div class="istatistikler" aria-label="Portal istatistikleri">
+<div class="istatistik"><span class="ist-ikon" aria-hidden="true">📊</span><div><strong>125+</strong><span>içerik</span></div></div>
+<div class="istatistik"><span class="ist-ikon" aria-hidden="true">🎓</span><div><strong>4</strong><span>sınıf düzeyi</span></div></div>
+<div class="istatistik"><span class="ist-ikon" aria-hidden="true">📚</span><div><strong id="aktifDersSayisi">–</strong><span>yayında ders</span></div></div>
+<div class="istatistik"><span class="ist-ikon" aria-hidden="true">✨</span><div><strong>v5.0</strong><span>MERT AI</span></div></div>
+</div>
+
 <div class="container">
 
-<div class="mainTitle">
-MERT YEŞİL EĞİTİM PORTALI
-</div>
+<!-- ========== HABERLER ========== -->
+<section class="news-section" aria-labelledby="haberBaslik">
 
-<div class="altBaslik">
-Ders Notları ve Yazılı Örnekleri
-</div>
-
-<div class="news-section">
-
-<div class="news-title">
-📰 Haberler ve Duyurular
+<div class="bolum-baslik">
+<h2 class="news-title" id="haberBaslik"><span aria-hidden="true">📰</span> Haberler ve Duyurular</h2>
+<button type="button" class="duyuru-tekrar" id="duyuruTekrar">📣 Duyuruyu göster</button>
 </div>
 
 <div class="news-grid">
 
-<div class="news-card">
-<span>Son eklenen</span>
-<h3>MERT AI modülü aktif edildi.</h3>
-<p>Sitemizin yapay zeka eğitim asistanı MERT AI aktif edildi.</p>
-</div>
-	
-<div class="news-card">
-<span>Son eklenen</span>
-<h3>3 ve 7.Sınıflar (2026-2027 öğretim yılı için maarif modeli) içerikleri</h3>
-<p>3 ve 7.Sınıflar için fen bilimleri derslerinin ilk içerikleri sistemimize yüklenmiştir.</p>
-</div>
+<article class="news-card">
+<span class="haber-etiket">Son eklenen</span>
+<h3>MERT AI v5.0 yayında!</h3>
+<p>Sitemizin yapay zekâ eğitim asistanı MERT AI aktif edildi. 02.10.2026 itibarıyla v5.0 sürümü yayında.</p>
+</article>
 
-<div class="news-card">
-<span>Bilgi</span>
-<h3>7.Sınıf maarif model 2026-2027 öğretim yılı içerikleri hakkında</h3>
-<p>7.Sınıf maarif model (2026-2027) içerikleri Haziran 2026'dan itibaren kademeli olarak yüklenecektir.</p>
-</div>
+<article class="news-card">
+<span class="haber-etiket">Son eklenen</span>
+<h3>3 ve 7. Sınıflar (2026-2027 Maarif Modeli) içerikleri</h3>
+<p>3 ve 7. sınıflar için Fen Bilimleri derslerinin ilk içerikleri sistemimize yüklenmiştir.</p>
+</article>
 
-
-</div>
-</div>
-	
-<div class="class-section yazili">
-
-<div class="class-title">
-📝 Yazılı Örnekleri
-</div>
-
-<div class="lesson-grid">
-
-<a class="lesson" href="dersler/6/yazili.html">
-<h3>6.Sınıf Yazılılar</h3>
-<p>PDF yazılı örnekleri</p>
-</a>
-<a class="lesson" href="dersler/7/yazili.html">
-<h3>7.Sınıf Yazılılar</h3>
-<p>PDF yazılı örnekleri</p>
-</a>
+<article class="news-card bilgi">
+<span class="haber-etiket">Bilgi</span>
+<h3>7. Sınıf Maarif Modeli 2026-2027 içerikleri hakkında</h3>
+<p>7. sınıf Maarif Modeli (2026-2027) içerikleri Haziran 2026'dan itibaren kademeli olarak yüklenmektedir.</p>
+</article>
 
 </div>
+</section>
+
+<!-- ========== FİLTRE ========== -->
+<div class="filtreler" role="toolbar" aria-label="Sınıfa göre filtrele" id="dersler">
+<button type="button" class="filtre" data-filtre="hepsi" aria-pressed="true">Tümü</button>
+<button type="button" class="filtre" data-filtre="yazili" aria-pressed="false">📝 Yazılılar</button>
+<button type="button" class="filtre" data-filtre="3" aria-pressed="false">3. Sınıf</button>
+<button type="button" class="filtre" data-filtre="5" aria-pressed="false">5. Sınıf</button>
+<button type="button" class="filtre" data-filtre="6" aria-pressed="false">6. Sınıf</button>
+<button type="button" class="filtre" data-filtre="7" aria-pressed="false">7. Sınıf</button>
 </div>
 
-<div class="class-section">
+<p class="sr-only" id="aramaDurum" aria-live="polite"></p>
 
-<div class="class-title">
-📘 6.Sınıf Dersleri
+<!-- ========== YAZILILAR ========== -->
+<section class="class-section yazili" data-grup="yazili" id="yazililar" aria-labelledby="b-yazili">
+
+<div class="bolum-baslik">
+<h2 class="class-title" id="b-yazili"><span aria-hidden="true">📝</span> Yazılı Örnekleri</h2>
 </div>
 
 <div class="lesson-grid">
 
-<a class="lesson" href="dersler/7/yazkamp.html">
-<h3>6'dan 7'ye Geçiş Kampı</h3>
-<p>Konu anlatımı ve testler</p>
-</a>
-	
-<a class="lesson" href="dersler/6/turkce.html">
-<h3>Türkçe</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-yazili" href="dersler/6/yazili.html">
+<span class="ders-ikon" aria-hidden="true">📄</span>
+<span class="ders-metin"><h3>6. Sınıf Yazılılar</h3><p>PDF yazılı örnekleri</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson" href="dersler/6/mat.html">
-<h3>Matematik</h3>
-<p>Konu anlatımı ve testler</p>
-</a>
-
-<a class="lesson" href="dersler/6/fen.html">
-<h3>Fen Bilimleri</h3>
-<p>Konu anlatımı ve testler</p>
-</a>
-
-<a class="lesson" href="dersler/6/sosyal.html">
-<h3>Sosyal Bilgiler</h3>
-<p>Konu anlatımı ve testler</p>
-</a>
-
-<a class="lesson" href="dersler/6/din.html">
-<h3>Din Kültürü</h3>
-<p>Konu anlatımı ve testler</p>
-</a>
-
-<a class="lesson yakinda" href="dersler/6/ingilizce.html" aria-disabled="true" tabindex="-1">
-<h3>İngilizce (YAKINDA)</h3>
-<p>Konu anlatımı ve testler</p>
-</a>
-
-<a class="lesson" href="dersler/6/sinav.html">
-<h3>Süreç Değerlendirme Sınavları</h3>
-<p>Değerlendirme Sınavları ve Değerlendirme Ölçeği</p>
+<a class="lesson ders-yazili" href="dersler/7/yazili.html">
+<span class="ders-ikon" aria-hidden="true">📄</span>
+<span class="ders-metin"><h3>7. Sınıf Yazılılar</h3><p>PDF yazılı örnekleri</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
 </div>
-</div>
+</section>
 
-	<div class="class-section">
+<!-- ========== 6. SINIF ========== -->
+<section class="class-section" data-grup="6" id="sinif-6" aria-labelledby="b-6">
 
-<div class="class-title">
-📘 7.Sınıf Dersleri
+<div class="bolum-baslik">
+<h2 class="class-title" id="b-6"><span aria-hidden="true">📘</span> 6. Sınıf Dersleri</h2>
 </div>
 
 <div class="lesson-grid">
 
-<a class="lesson" href="dersler/7/turkce.html">
-<h3>Türkçe</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-kamp" href="dersler/7/yazkamp.html">
+<span class="ders-ikon" aria-hidden="true">🏕️</span>
+<span class="ders-metin"><h3>6'dan 7'ye Geçiş Kampı</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson" href="dersler/7/mat.html">
-<h3>Matematik</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-turkce" href="dersler/6/turkce.html">
+<span class="ders-ikon" aria-hidden="true">📖</span>
+<span class="ders-metin"><h3>Türkçe</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson" href="dersler/7/fen.html">
-<h3>Fen Bilimleri</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-mat" href="dersler/6/mat.html">
+<span class="ders-ikon" aria-hidden="true">➗</span>
+<span class="ders-metin"><h3>Matematik</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson" href="dersler/7/sosyal.html">
-<h3>Sosyal Bilgiler</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-fen" href="dersler/6/fen.html">
+<span class="ders-ikon" aria-hidden="true">🔬</span>
+<span class="ders-metin"><h3>Fen Bilimleri</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson" href="dersler/7/din.html">
-<h3>Din Kültürü</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-sosyal" href="dersler/6/sosyal.html">
+<span class="ders-ikon" aria-hidden="true">🌍</span>
+<span class="ders-metin"><h3>Sosyal Bilgiler</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson yakinda" href="dersler/7/ingilizce.html" aria-disabled="true" tabindex="-1">
-<h3>İngilizce (YAKINDA)</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-din" href="dersler/6/din.html">
+<span class="ders-ikon" aria-hidden="true">🕌</span>
+<span class="ders-metin"><h3>Din Kültürü</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-</div>
-</div>
-	
-<div class="class-section">
-	
-<div class="class-title">
-📘 3.Sınıf Dersleri
-</div>
-
-<div class="lesson-grid">
-
-<a class="lesson yakinda" href="dersler/3/turkce.html" aria-disabled="true" tabindex="-1">
-<h3>Türkçe (YAKINDA)</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-ing yakinda" href="dersler/6/ingilizce.html" aria-disabled="true" tabindex="-1">
+<span class="ders-ikon" aria-hidden="true">🇬🇧</span>
+<span class="ders-metin"><h3>İngilizce <span class="rozet yakinda-rozet">YAKINDA</span></h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson yakinda" href="dersler/3/mat.html" aria-disabled="true" tabindex="-1">
-<h3>Matematik (YAKINDA)</h3>
-<p>Konu anlatımı ve testler</p>
-</a>
-
-<a class="lesson" href="dersler/3/fen.html">
-<h3>Fen Bilimleri Maarif</h3>
-<p>Konu anlatımı ve testler</p>
-</a>
-
-<a class="lesson yakinda" href="dersler/3/hayat.html" aria-disabled="true" tabindex="-1">
-<h3>Hayat Bilgisi (YAKINDA)</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-sinav" href="dersler/6/sinav.html">
+<span class="ders-ikon" aria-hidden="true">✅</span>
+<span class="ders-metin"><h3>Süreç Değerlendirme Sınavları</h3><p>Değerlendirme sınavları ve değerlendirme ölçeği</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
 </div>
-</div>
-	
-	
-<div class="class-section">
+</section>
 
-<div class="class-title">
-📘 5.Sınıf Dersleri
+<!-- ========== 7. SINIF ========== -->
+<section class="class-section" data-grup="7" id="sinif-7" aria-labelledby="b-7">
+
+<div class="bolum-baslik">
+<h2 class="class-title" id="b-7"><span aria-hidden="true">📗</span> 7. Sınıf Dersleri <span class="rozet maarif">MAARİF 2026-2027</span></h2>
 </div>
 
 <div class="lesson-grid">
 
-<a class="lesson yakinda" href="dersler/5/turkce.html" aria-disabled="true" tabindex="-1">
-<h3>Türkçe (YAKINDA)</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-turkce" href="dersler/7/turkce.html">
+<span class="ders-ikon" aria-hidden="true">📖</span>
+<span class="ders-metin"><h3>Türkçe</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson" href="dersler/5/mat.html">
-<h3>Matematik</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-mat" href="dersler/7/mat.html">
+<span class="ders-ikon" aria-hidden="true">➗</span>
+<span class="ders-metin"><h3>Matematik</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson yakinda" href="dersler/5/fen.html" aria-disabled="true" tabindex="-1">
-<h3>Fen Bilimleri (YAKINDA)</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-fen" href="dersler/7/fen.html">
+<span class="ders-ikon" aria-hidden="true">🔬</span>
+<span class="ders-metin"><h3>Fen Bilimleri <span class="rozet yeni">YENİ</span></h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson yakinda" href="dersler/5/sosyal.html" aria-disabled="true" tabindex="-1">
-<h3>Sosyal Bilgiler (YAKINDA)</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-sosyal" href="dersler/7/sosyal.html">
+<span class="ders-ikon" aria-hidden="true">🌍</span>
+<span class="ders-metin"><h3>Sosyal Bilgiler</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson" href="dersler/5/din.html">
-<h3>Din Kültürü</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-din" href="dersler/7/din.html">
+<span class="ders-ikon" aria-hidden="true">🕌</span>
+<span class="ders-metin"><h3>Din Kültürü</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
-<a class="lesson yakinda" href="dersler/5/ingilizce.html" aria-disabled="true" tabindex="-1">
-<h3>İngilizce (YAKINDA)</h3>
-<p>Konu anlatımı ve testler</p>
+<a class="lesson ders-ing yakinda" href="dersler/7/ingilizce.html" aria-disabled="true" tabindex="-1">
+<span class="ders-ikon" aria-hidden="true">🇬🇧</span>
+<span class="ders-metin"><h3>İngilizce <span class="rozet yakinda-rozet">YAKINDA</span></h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
 </a>
 
 </div>
+</section>
+
+<!-- ========== 3. SINIF ========== -->
+<section class="class-section" data-grup="3" id="sinif-3" aria-labelledby="b-3">
+
+<div class="bolum-baslik">
+<h2 class="class-title" id="b-3"><span aria-hidden="true">📙</span> 3. Sınıf Dersleri <span class="rozet maarif">MAARİF</span></h2>
 </div>
 
-<div class="footer">
-2026 Mert Yeşil Eğitim Portalı
+<div class="lesson-grid">
+
+<a class="lesson ders-turkce yakinda" href="dersler/3/turkce.html" aria-disabled="true" tabindex="-1">
+<span class="ders-ikon" aria-hidden="true">📖</span>
+<span class="ders-metin"><h3>Türkçe <span class="rozet yakinda-rozet">YAKINDA</span></h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
+</a>
+
+<a class="lesson ders-mat yakinda" href="dersler/3/mat.html" aria-disabled="true" tabindex="-1">
+<span class="ders-ikon" aria-hidden="true">➗</span>
+<span class="ders-metin"><h3>Matematik <span class="rozet yakinda-rozet">YAKINDA</span></h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
+</a>
+
+<a class="lesson ders-fen" href="dersler/3/fen.html">
+<span class="ders-ikon" aria-hidden="true">🔬</span>
+<span class="ders-metin"><h3>Fen Bilimleri <span class="rozet yeni">YENİ</span></h3><p>Maarif Modeli konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
+</a>
+
+<a class="lesson ders-hayat yakinda" href="dersler/3/hayat.html" aria-disabled="true" tabindex="-1">
+<span class="ders-ikon" aria-hidden="true">🌱</span>
+<span class="ders-metin"><h3>Hayat Bilgisi <span class="rozet yakinda-rozet">YAKINDA</span></h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
+</a>
+
+</div>
+</section>
+
+<!-- ========== 5. SINIF ========== -->
+<section class="class-section" data-grup="5" id="sinif-5" aria-labelledby="b-5">
+
+<div class="bolum-baslik">
+<h2 class="class-title" id="b-5"><span aria-hidden="true">📕</span> 5. Sınıf Dersleri</h2>
+</div>
+
+<div class="lesson-grid">
+
+<a class="lesson ders-turkce yakinda" href="dersler/5/turkce.html" aria-disabled="true" tabindex="-1">
+<span class="ders-ikon" aria-hidden="true">📖</span>
+<span class="ders-metin"><h3>Türkçe <span class="rozet yakinda-rozet">YAKINDA</span></h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
+</a>
+
+<a class="lesson ders-mat" href="dersler/5/mat.html">
+<span class="ders-ikon" aria-hidden="true">➗</span>
+<span class="ders-metin"><h3>Matematik</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
+</a>
+
+<a class="lesson ders-fen yakinda" href="dersler/5/fen.html" aria-disabled="true" tabindex="-1">
+<span class="ders-ikon" aria-hidden="true">🔬</span>
+<span class="ders-metin"><h3>Fen Bilimleri <span class="rozet yakinda-rozet">YAKINDA</span></h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
+</a>
+
+<a class="lesson ders-sosyal yakinda" href="dersler/5/sosyal.html" aria-disabled="true" tabindex="-1">
+<span class="ders-ikon" aria-hidden="true">🌍</span>
+<span class="ders-metin"><h3>Sosyal Bilgiler <span class="rozet yakinda-rozet">YAKINDA</span></h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
+</a>
+
+<a class="lesson ders-din" href="dersler/5/din.html">
+<span class="ders-ikon" aria-hidden="true">🕌</span>
+<span class="ders-metin"><h3>Din Kültürü</h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
+</a>
+
+<a class="lesson ders-ing yakinda" href="dersler/5/ingilizce.html" aria-disabled="true" tabindex="-1">
+<span class="ders-ikon" aria-hidden="true">🇬🇧</span>
+<span class="ders-metin"><h3>İngilizce <span class="rozet yakinda-rozet">YAKINDA</span></h3><p>Konu anlatımı ve testler</p></span>
+<span class="ok" aria-hidden="true">→</span>
+</a>
+
+</div>
+</section>
+
+<div id="sonucYok">
+<div class="buyuk" aria-hidden="true">🔎</div>
+<strong>Sonuç bulunamadı</strong>
+Farklı bir kelime dene ya da <a href="ai.html">MERT AI'a sor</a>.
 </div>
 
 </div>
+
+<footer class="footer">
+<nav class="footer-linkler" aria-label="Alt menü">
+<a href="hakkimizda.html">Hakkımızda</a>
+<a href="/araclar/">Ders Araçları</a>
+<a href="ai.html">MERT AI</a>
+<a href="/dersler/akillitahta.html">Akıllı Tahta</a>
+<a href="gizlilik.html">Gizlilik Politikası</a>
+<a href="iletisim.html">İletişim</a>
+</nav>
+© <span id="yil">2026</span> Mert Yeşil Eğitim Portalı · Tüm hakları saklıdır.
+</footer>
+
+</main>
+
+<button id="yukariButon" type="button" aria-label="Sayfanın başına dön">↑</button>
 
 <script>
+(function(){
+"use strict";
+
+/* ---------- Güvenli localStorage ---------- */
+function oku(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function yaz(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+var kok = document.documentElement;
+
+/* ---------- Tema ---------- */
+var temaButon = document.getElementById("temaButon");
+function koyuMu(){
+  var t = kok.getAttribute("data-theme");
+  if(t) return t === "dark";
+  return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+function temaButonGuncelle(){
+  var koyu = koyuMu();
+  temaButon.textContent = koyu ? "☀️" : "🌙";
+  temaButon.setAttribute("aria-label", koyu ? "Açık temaya geç" : "Koyu temaya geç");
+}
+temaButon.addEventListener("click", function(){
+  var yeni = koyuMu() ? "light" : "dark";
+  kok.setAttribute("data-theme", yeni);
+  yaz("tema", yeni);
+  temaButonGuncelle();
+});
+temaButonGuncelle();
+
+/* ---------- Mobil menü ---------- */
+var menuButon = document.getElementById("menuButon");
+var anaMenu = document.getElementById("anaMenu");
+function menuKapat(){
+  anaMenu.classList.remove("acik");
+  menuButon.setAttribute("aria-expanded","false");
+  menuButon.setAttribute("aria-label","Menüyü aç");
+  menuButon.textContent = "☰";
+}
+menuButon.addEventListener("click", function(){
+  var acik = anaMenu.classList.toggle("acik");
+  menuButon.setAttribute("aria-expanded", acik ? "true" : "false");
+  menuButon.setAttribute("aria-label", acik ? "Menüyü kapat" : "Menüyü aç");
+  menuButon.textContent = acik ? "✕" : "☰";
+});
+anaMenu.addEventListener("click", function(e){ if(e.target.closest("a")) menuKapat(); });
+document.addEventListener("click", function(e){
+  if(anaMenu.classList.contains("acik") && !e.target.closest(".menu-sag")) menuKapat();
+});
+
+/* ---------- Duyuru ---------- */
+var DUYURU_SURUM = "2026-10-02-v5";   // Yeni duyuruda bu değeri değiştir, herkese yeniden gösterilir
+var duyuruArka = document.getElementById("duyuruArka");
+var duyuruButon = document.getElementById("duyuruButon");
+var tekrarGosterme = document.getElementById("tekrarGosterme");
+var oncekiOdak = null;
+
+function duyuruAc(){
+  oncekiOdak = document.activeElement;
+  duyuruArka.classList.add("acik");
+  document.body.style.overflow = "hidden";
+  duyuruButon.focus();
+}
 function duyuruKapat(){
-  document.getElementById("duyuruArka").style.display = "none";
+  if(!duyuruArka.classList.contains("acik")) return;
+  duyuruArka.classList.remove("acik");
+  document.body.style.overflow = "";
+  if(tekrarGosterme.checked) yaz("duyuruGoruldu", DUYURU_SURUM);
+  if(oncekiOdak && oncekiOdak.focus) oncekiOdak.focus();
+}
+window.duyuruKapat = duyuruKapat; // eski çağrılarla uyumluluk
+
+duyuruButon.addEventListener("click", duyuruKapat);
+document.getElementById("duyuruKapatX").addEventListener("click", duyuruKapat);
+document.getElementById("duyuruTekrar").addEventListener("click", duyuruAc);
+duyuruArka.addEventListener("click", function(e){ if(e.target === duyuruArka) duyuruKapat(); });
+
+// Odak tuzağı: Tab ile pencere dışına çıkılmasın
+duyuruArka.addEventListener("keydown", function(e){
+  if(e.key !== "Tab") return;
+  var odaklanabilir = duyuruArka.querySelectorAll("button, input, a[href]");
+  var ilk = odaklanabilir[0], son = odaklanabilir[odaklanabilir.length-1];
+  if(e.shiftKey && document.activeElement === ilk){ e.preventDefault(); son.focus(); }
+  else if(!e.shiftKey && document.activeElement === son){ e.preventDefault(); ilk.focus(); }
+});
+
+if(oku("duyuruGoruldu") !== DUYURU_SURUM){ duyuruAc(); }
+
+/* ---------- Ders sayıları ---------- */
+var bolumler = Array.prototype.slice.call(document.querySelectorAll(".class-section"));
+var tumDersler = Array.prototype.slice.call(document.querySelectorAll(".lesson"));
+
+tumDersler.forEach(function(d){
+  var h = d.querySelector("h3");
+  d._baslik = h.firstChild.nodeValue.trim();           // rozetsiz başlık metni
+  d._metin = normalize(d.textContent + " " + (d.closest(".class-section").querySelector(".class-title").textContent));
+});
+
+document.getElementById("aktifDersSayisi").textContent =
+  tumDersler.filter(function(d){ return !d.classList.contains("yakinda"); }).length;
+
+/* ---------- Arama + filtre ---------- */
+function normalize(s){
+  return s.toLocaleLowerCase("tr-TR")
+    .replace(/ı/g,"i").replace(/ğ/g,"g").replace(/ü/g,"u")
+    .replace(/ş/g,"s").replace(/ö/g,"o").replace(/ç/g,"c").replace(/â/g,"a")
+    .replace(/\s+/g," ").trim();
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-  document.getElementById("duyuruArka").style.display = "flex";
+var arama = document.getElementById("arama");
+var aramaTemizle = document.getElementById("aramaTemizle");
+var kisayol = document.getElementById("kisayol");
+var sonucYok = document.getElementById("sonucYok");
+var aramaDurum = document.getElementById("aramaDurum");
+var filtreler = Array.prototype.slice.call(document.querySelectorAll(".filtre"));
+var aktifFiltre = "hepsi";
 
-  // Arka plana tıklayınca kapat
-  document.getElementById("duyuruArka").addEventListener("click", function(e){
-    if(e.target.id === "duyuruArka"){
-      duyuruKapat();
-    }
+function baslikVurgula(d, sorgu){
+  var h = d.querySelector("h3");
+  var temiz = d._baslik;
+  // Rozetten önceki metin/vurgu düğümlerini sıfırla
+  while(h.firstChild && !(h.firstChild.nodeType === 1 && h.firstChild.classList.contains("rozet"))){
+    h.removeChild(h.firstChild);
+  }
+  var ilkRozet = h.firstChild;
+  if(!sorgu){
+    h.insertBefore(document.createTextNode(temiz + " "), ilkRozet);
+    return;
+  }
+  var idx = normalize(temiz).indexOf(sorgu);
+  // normalize harf sayısını korur, bu yüzden indeksler orijinal metinle eşleşir
+  if(idx < 0 || normalize(temiz).length !== temiz.length){
+    h.insertBefore(document.createTextNode(temiz + " "), ilkRozet);
+    return;
+  }
+  var m = document.createElement("mark");
+  m.className = "vurgu";
+  m.textContent = temiz.substr(idx, sorgu.length);
+  h.insertBefore(document.createTextNode(temiz.substr(0, idx)), ilkRozet);
+  h.insertBefore(m, ilkRozet);
+  h.insertBefore(document.createTextNode(temiz.substr(idx + sorgu.length) + " "), ilkRozet);
+}
+
+function uygula(){
+  var sorgu = normalize(arama.value);
+  var kelimeler = sorgu ? sorgu.split(" ") : [];
+  var toplam = 0;
+
+  bolumler.forEach(function(b){
+    var grupUygun = aktifFiltre === "hepsi" || b.getAttribute("data-grup") === aktifFiltre;
+    var gorunen = 0;
+    b.querySelectorAll(".lesson").forEach(function(d){
+      var uygun = grupUygun && kelimeler.every(function(k){ return d._metin.indexOf(k) !== -1; });
+      d.hidden = !uygun;
+      baslikVurgula(d, uygun && kelimeler.length === 1 ? kelimeler[0] : "");
+      if(uygun) gorunen++;
+    });
+    b.hidden = gorunen === 0;
+    toplam += gorunen;
   });
 
-  // Esc tuşu ile kapat
-  document.addEventListener("keydown", function(e){
-    if(e.key === "Escape"){
-      var kutu = document.getElementById("duyuruArka");
-      if(kutu.style.display !== "none"){
-        duyuruKapat();
-      }
-    }
+  sonucYok.style.display = toplam === 0 ? "block" : "none";
+  aramaTemizle.style.display = arama.value ? "block" : "none";
+  kisayol.style.display = arama.value ? "none" : "";
+  aramaDurum.textContent = sorgu || aktifFiltre !== "hepsi" ? toplam + " sonuç gösteriliyor" : "";
+}
+
+arama.addEventListener("input", uygula);
+aramaTemizle.addEventListener("click", function(){ arama.value = ""; uygula(); arama.focus(); });
+
+filtreler.forEach(function(f){
+  f.addEventListener("click", function(){
+    aktifFiltre = f.getAttribute("data-filtre");
+    filtreler.forEach(function(x){ x.setAttribute("aria-pressed", x === f ? "true" : "false"); });
+    yaz("sinifFiltre", aktifFiltre);
+    uygula();
   });
 });
+
+// Son seçilen sınıfı hatırla
+var kayitliFiltre = oku("sinifFiltre");
+if(kayitliFiltre){
+  var hedef = filtreler.filter(function(f){ return f.getAttribute("data-filtre") === kayitliFiltre; })[0];
+  if(hedef) hedef.click();
+}
+uygula();
+
+/* ---------- Klavye kısayolları ---------- */
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    if(duyuruArka.classList.contains("acik")){ duyuruKapat(); return; }
+    if(anaMenu.classList.contains("acik")){ menuKapat(); menuButon.focus(); return; }
+    if(document.activeElement === arama && arama.value){ arama.value = ""; uygula(); }
+    return;
+  }
+  var yaziyor = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
+  if(e.key === "/" && !yaziyor && !duyuruArka.classList.contains("acik")){
+    e.preventDefault();
+    arama.focus();
+    arama.scrollIntoView({block:"center"});
+  }
+});
+
+/* ---------- Yukarı çık ---------- */
+var yukariButon = document.getElementById("yukariButon");
+window.addEventListener("scroll", function(){
+  yukariButon.classList.toggle("goster", window.scrollY > 500);
+}, {passive:true});
+yukariButon.addEventListener("click", function(){ window.scrollTo({top:0,behavior:"smooth"}); });
+
+/* ---------- Görünüme giriş animasyonu ---------- */
+if("IntersectionObserver" in window){
+  var gozlemci = new IntersectionObserver(function(girisler){
+    girisler.forEach(function(g){
+      if(g.isIntersecting){ g.target.classList.add("gorundu"); gozlemci.unobserve(g.target); }
+    });
+  }, {rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".class-section, .news-card, .istatistik").forEach(function(el){
+    el.classList.add("gir");
+    gozlemci.observe(el);
+  });
+}
+
+/* ---------- Yıl ---------- */
+document.getElementById("yil").textContent = new Date().getFullYear();
+
+})();
 </script>
 
 </body>
