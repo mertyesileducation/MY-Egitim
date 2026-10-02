@@ -25,8 +25,8 @@
         }
 
         .glass-notice {
-            background: rgba(245, 158, 11, 0.08);
-            border: 1px solid rgba(245, 158, 11, 0.25);
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.25);
         }
 
         /* Animated Background Lights */
@@ -36,8 +36,8 @@
             height: 450px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(0,0,0,0) 70%);
-            top: 5%;
-            left: 10%;
+            top: 15%;
+            left: 20%;
             filter: blur(90px);
             animation: floatGlow 8s infinite alternate ease-in-out;
             pointer-events: none;
@@ -49,8 +49,8 @@
             height: 400px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(0,0,0,0) 70%);
-            bottom: 5%;
-            right: 10%;
+            bottom: 15%;
+            right: 20%;
             filter: blur(90px);
             animation: floatGlow 10s infinite alternate-reverse ease-in-out;
             pointer-events: none;
@@ -61,7 +61,7 @@
             100% { transform: translate(40px, 30px) scale(1.15); }
         }
 
-        /* Custom Scrollbar inside modal */
+        /* Custom Scrollbar */
         .custom-scroll::-webkit-scrollbar {
             width: 6px;
         }
@@ -94,150 +94,60 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen w-full overflow-hidden flex flex-col justify-between relative">
+<body class="bg-slate-950 text-slate-100 min-h-screen w-full flex items-center justify-center p-3 sm:p-4 relative overflow-hidden">
 
-    <!-- Background Portal Application -->
-    <div class="fixed inset-0 z-0 w-full h-full">
-        <iframe src="https://mert-ai.ai.studio" class="w-full h-full border-none" title="Mert-AI Yapay Zeka Asistanı"></iframe>
-    </div>
+    <!-- Glow Lights (Arka Plan Efekleri) -->
+    <div class="glow-1 hidden sm:block"></div>
+    <div class="glow-2 hidden sm:block"></div>
 
-    <!-- Modal Overlay Container -->
-    <div id="modalOverlay" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm transition-opacity duration-300">
-        <!-- Glow Lights -->
-        <div class="glow-1 hidden sm:block"></div>
-        <div class="glow-2 hidden sm:block"></div>
+    <!-- Centered Responsive Popup Dialog Box -->
+    <div class="glass-card animate-modal w-full max-w-xl rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col relative z-10 overflow-hidden border border-white/10">
+        
+        <!-- Modal Header -->
+        <div class="p-4 sm:p-6 pb-3 border-b border-white/10 flex items-center justify-between bg-slate-900/50">
+            <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                    <i class="fa-solid fa-sparkles text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="font-bold text-base sm:text-lg text-white leading-tight">Mert-AI Yenilendi!</h2>
+                    <p class="text-xs text-indigo-300 font-medium">Mert Yeşil Eğitim Portalı v5.0</p>
+                </div>
+            </div>
+        </div>
 
-        <!-- Centered Responsive Popup Dialog Box -->
-        <div class="glass-card animate-modal w-full max-w-xl max-h-[90vh] rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col relative z-10 overflow-hidden border border-white/10">
+        <!-- Modal Content -->
+        <div class="p-4 sm:p-6 space-y-4 overflow-y-auto custom-scroll text-slate-200">
             
-            <!-- Modal Header -->
-            <div class="p-4 sm:p-6 pb-3 border-b border-white/10 flex items-center justify-between bg-slate-900/50">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                        <i class="fa-solid fa-sparkles text-lg"></i>
-                    </div>
-                    <div>
-                        <h2 class="font-bold text-base sm:text-lg text-white leading-tight">Mert-AI Bilgilendirme</h2>
-                        <p class="text-xs text-indigo-300 font-medium">Mert Yeşil Eğitim Portalı v4.0</p>
-                    </div>
-                </div>
-                <button onclick="closeNotice()" aria-label="Kapat" class="text-slate-400 hover:text-white transition-colors w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/10">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
+            <!-- Notice Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold">
+                <i class="fa-solid fa-rocket"></i>
+                <span>Yeni Sürüm Yayında</span>
             </div>
 
-            <!-- Modal Content (Scrollable if screen size is very small) -->
-            <div class="p-4 sm:p-6 space-y-4 overflow-y-auto custom-scroll text-slate-200">
-                
-                <!-- Notice Badge -->
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    <span>Sistem Güncellemesi ve Kesinti Duyurusu</span>
-                </div>
-
-                <!-- Main Announcement Box -->
-                <div class="glass-notice p-4 sm:p-5 rounded-xl text-xs sm:text-sm leading-relaxed space-y-2.5 text-slate-300">
-                    <p class="font-semibold text-amber-300 text-sm sm:text-base flex items-center gap-2">
-                        <i class="fa-solid fa-bullhorn text-amber-400"></i> Önemli Bilgilendirme!
-                    </p>
-                    <p>
-                        Mert AI v4.0 modelindeki yeni geliştirmelerimiz nedeniyle sistemimizde 
-                        <strong class="text-amber-200 underline decoration-amber-500/50">1 Ekim - 10 Ekim</strong> arasında planlı kesintiler yaşanabilir.
-                    </p>
-                    <p>
-                        Yeni eklenen <strong class="text-indigo-300">görsel yükleme</strong> özelliği ile sorularınızı Mert AI'a görsel olarak sorabilirsiniz. 
-                        Sistem şu an geliştirme aşamasında olduğu için bazen mesajınız yarıda kalabilmektedir. Mesaj kutusunun altındaki 
-                        <strong class="text-indigo-300">"devam et"</strong> kutusuna basınız.
-                    </p>
-                    <p class="pt-1 border-t border-amber-500/20 text-xs text-slate-400">
-                        <i class="fa-solid fa-envelope text-indigo-400 mr-1"></i> Teknik kesinti yaşarsanız hemen 
-                        <a href="mailto:iletisim@mertyesil.com.tr" class="text-indigo-300 font-semibold underline hover:text-indigo-200 transition-colors">iletisim@mertyesil.com.tr</a>'ye bildiriniz.
-                    </p>
-                </div>
-
-                <!-- Quick Highlights -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
-                    <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5 flex items-center sm:flex-col sm:items-start gap-3 sm:gap-2">
-                        <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-image text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xs font-bold text-slate-200">Görsel Yükleme</h3>
-                            <p class="text-[11px] text-slate-400">Sorularınızı fotoğrafla sorun.</p>
-                        </div>
-                    </div>
-
-                    <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5 flex items-center sm:flex-col sm:items-start gap-3 sm:gap-2">
-                        <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-play text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xs font-bold text-slate-200">Devam Et Butonu</h3>
-                            <p class="text-[11px] text-slate-400">Yarıda kalan mesajı tamamlayın.</p>
-                        </div>
-                    </div>
-
-                    <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5 flex items-center sm:flex-col sm:items-start gap-3 sm:gap-2">
-                        <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-headset text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xs font-bold text-slate-200">Destek Hattı</h3>
-                            <p class="text-[11px] text-slate-400">7/24 Mail Desteği</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Modal Footer with Action Button -->
-            <div class="p-4 sm:p-5 pt-3 border-t border-white/10 bg-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <span class="text-xs text-slate-400 hidden sm:inline-block">Mert-AI v4.0 Eğitim Modeli</span>
-                <button onclick="closeNotice()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-sm shadow-lg shadow-indigo-500/25 active:scale-98 transition-all duration-200 flex items-center justify-center gap-2">
-                    <span>Anladım, Sisteme Giriş Yap</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                </button>
+            <!-- Main Announcement Box -->
+            <div class="glass-notice p-4 sm:p-5 rounded-xl text-xs sm:text-sm leading-relaxed space-y-3 text-slate-300">
+                <p class="font-semibold text-indigo-300 text-sm sm:text-base flex items-center gap-2">
+                    <i class="fa-solid fa-hand-wave text-indigo-400"></i> Merhaba Sayın Kullanıcımız,
+                </p>
+                <p class="text-slate-200 text-sm">
+                    Mert AI v5.0 sistemimiz başka bir adrese taşınmıştır. Sistem açılınca mert-ai.ai.studio adresine yönlendirileceksiniz. AI modülünün uygulamasını da indirebilirsiniz. Yaşadıığınız problemleri hemen iletişim hattımıza bildiriniz.
+					<br> Kamuoyuna duyurulur.
+                </p>
             </div>
 
         </div>
+
+        <!-- Modal Footer with Action Button -->
+        <div class="p-4 sm:p-5 pt-3 border-t border-white/10 bg-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span class="text-xs text-slate-400 hidden sm:inline-block">Mert-AI v5.0 Modeli</span>
+            <a href="https://mert-ai.ai.studio" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-sm shadow-lg shadow-indigo-500/25 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 text-center">
+                <span>Hadi Gidelim</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+
     </div>
 
-    <!-- Top-Right Reopen Notification Button -->
-    <button id="reopenBtn" onclick="openNotice()" class="fixed top-3 right-3 z-40 hidden px-3 py-2 rounded-xl glass-card text-xs font-semibold text-amber-300 hover:text-white hover:border-amber-400/50 transition-all shadow-lg flex items-center gap-2 border border-amber-500/30 bg-slate-900/90">
-        <i class="fa-solid fa-bell text-amber-400 animate-pulse"></i>
-        <span>Sistem Duyurusu</span>
-    </button>
-
-    <script>
-        function closeNotice() {
-            const overlay = document.getElementById('modalOverlay');
-            const reopenBtn = document.getElementById('reopenBtn');
-            
-            // Fade out effect
-            overlay.classList.add('opacity-0', 'pointer-events-none');
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                reopenBtn.classList.remove('hidden');
-            }, 300);
-        }
-
-        function openNotice() {
-            const overlay = document.getElementById('modalOverlay');
-            const reopenBtn = document.getElementById('reopenBtn');
-            
-            overlay.style.display = 'flex';
-            setTimeout(() => {
-                overlay.classList.remove('opacity-0', 'pointer-events-none');
-            }, 10);
-            reopenBtn.classList.add('hidden');
-        }
-
-        // Close on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeNotice();
-            }
-        });
-    </script>
 </body>
 </html>
