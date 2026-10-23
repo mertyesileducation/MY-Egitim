@@ -421,6 +421,34 @@ transition:background .2s,transform .15s;
 }
 .hizli-erisim a:hover{background:rgba(255,255,255,0.24);transform:translateY(-2px);}
 
+/* Tanıtımı izleyin butonu */
+.hizli-erisim .tanitim-buton{
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+gap:9px;
+background:white;
+color:#1e3a8a;
+border:1px solid white;
+font-weight:800;
+font-size:13.5px;
+padding:9px 16px 9px 9px;
+border-radius:12px;
+cursor:pointer;
+box-shadow:0 10px 22px rgba(15,23,42,0.22);
+transition:transform .15s,box-shadow .15s;
+}
+.hizli-erisim .tanitim-buton:hover{background:white;transform:translateY(-2px);box-shadow:0 14px 28px rgba(15,23,42,0.3);}
+.tanitim-buton .oynat{
+width:26px;height:26px;
+border-radius:8px;
+background:linear-gradient(135deg,#ef4444,#f97316);
+color:white;
+display:flex;align-items:center;justify-content:center;
+font-size:11px;
+padding-left:2px;
+}
+
 /* İstatistikler */
 .istatistikler{
 display:grid;
@@ -958,6 +986,77 @@ from{opacity:0;transform:scale(.94) translateY(8px);}
 to{opacity:1;transform:scale(1) translateY(0);}
 }
 
+/* ========== TANITIM VİDEOSU PENCERESİ ========== */
+#videoArka{
+position:fixed;
+inset:0;
+background:rgba(2,6,23,0.85);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+padding:20px;
+}
+#videoArka.acik{display:flex;}
+
+#videoKutu{
+width:100%;
+max-width:900px;
+background:#0b1220;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 30px 70px rgba(0,0,0,0.5);
+border:1px solid rgba(255,255,255,0.1);
+animation:duyuruAc .3s cubic-bezier(.2,.8,.2,1);
+}
+
+.video-ust{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:12px 14px 12px 18px;
+background:linear-gradient(135deg,#1e3a8a,#2563eb);
+color:white;
+}
+.video-ust h2{font-size:16px;font-weight:800;}
+
+#videoKapat{
+width:34px;height:34px;
+flex:0 0 auto;
+border-radius:10px;
+border:1px solid rgba(255,255,255,0.3);
+background:rgba(255,255,255,0.15);
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+#videoKapat:hover{background:rgba(255,255,255,0.28);}
+
+.video-cerceve{
+position:relative;
+width:100%;
+aspect-ratio:16/9;
+background:#000;
+}
+.video-cerceve iframe{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+border:0;
+}
+
+.video-alt{
+padding:10px 16px;
+text-align:right;
+font-size:12.5px;
+}
+.video-alt a{color:#93c5fd;font-weight:600;text-decoration:none;}
+.video-alt a:hover{text-decoration:underline;}
+
 /* Kartların görünüme girişi */
 .gir{opacity:0;transform:translateY(14px);}
 .gir.gorundu{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease;}
@@ -1005,6 +1104,8 @@ main{padding:16px 12px 32px;}
 .logo small{display:none;}
 .istatistik{padding:12px;}
 .istatistik strong{font-size:17px;}
+#videoArka{padding:10px;}
+#videoKutu{border-radius:14px;}
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -1018,7 +1119,7 @@ scroll-behavior:auto !important;
 }
 
 @media print{
-header,#yukariButon,.filtreler,.hero .arama-kutu,.hizli-erisim,#duyuruArka{display:none !important;}
+header,#yukariButon,.filtreler,.hero .arama-kutu,.hizli-erisim,#duyuruArka,#videoArka{display:none !important;}
 body{background:white;}
 }
 </style>
@@ -1076,6 +1177,22 @@ body{background:white;}
   </div>
 </div>
 
+<!-- ========== TANITIM VİDEOSU PENCERESİ ========== -->
+<div id="videoArka" role="dialog" aria-modal="true" aria-labelledby="videoBaslik">
+  <div id="videoKutu">
+    <div class="video-ust">
+      <h2 id="videoBaslik">🎬 Portal Tanıtımı</h2>
+      <button id="videoKapat" type="button" aria-label="Videoyu kapat">✕</button>
+    </div>
+    <div class="video-cerceve">
+      <iframe id="videoIframe" title="MERT YEŞİL Eğitim Portalı tanıtım videosu" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="video-alt">
+      <a href="https://drive.google.com/file/d/1ETyK1dyu72M1FY89eLt7CDHNOp2HayI2/view?usp=drive_link" target="_blank" rel="noopener">Video açılmıyor mu? Google Drive'da izle ↗</a>
+    </div>
+  </div>
+</div>
+
 <!-- ========== ÜST MENÜ ========== -->
 <header>
 <div class="menu">
@@ -1091,7 +1208,8 @@ body{background:white;}
 <a href="hakkimizda.html">Hakkımızda</a>
 <a href="/araclar/">Ders Araçları</a>
 <a href="ai.html">MERT AI<span class="etiket-yeni">YENİ</span></a>
-<a href="/dersler/akillitahta.html">Akıllı Tahta<span class="etiket-yeni">YENİ</span></a>
+<a href="/mert-yesil-portal/">Sınav Sistemi<span class="etiket-yeni">YENİ</span></a>
+<a href="/dersler/akilli-tahta-modul">Akıllı Tahta<span class="etiket-yeni">YENİ</span></a>
 <a href="gizlilik.html">Gizlilik Politikası</a>
 <a href="iletisim.html">İletişim</a>
 </nav>
@@ -1121,16 +1239,17 @@ body{background:white;}
 </div>
 
 <div class="hizli-erisim">
+<a class="tanitim-buton" id="tanitimAc" href="https://drive.google.com/file/d/1ETyK1dyu72M1FY89eLt7CDHNOp2HayI2/view?usp=drive_link" target="_blank" rel="noopener"><span class="oynat" aria-hidden="true">▶</span> Tanıtımı İzleyin</a>
 <a href="ai.html"><span aria-hidden="true">🤖</span> MERT AI'a sor</a>
 <a href="/araclar/"><span aria-hidden="true">🧮</span> Ders Araçları</a>
-<a href="/dersler/akillitahta.html"><span aria-hidden="true">🖥️</span> Akıllı Tahta</a>
+<a href="/dersler/akilli-tahta-modul"><span aria-hidden="true">🖥️</span> Akıllı Tahta</a>
 <a href="#yazililar"><span aria-hidden="true">📝</span> Yazılılar</a>
 </div>
 </div>
 </section>
 
 <div class="istatistikler" aria-label="Portal istatistikleri">
-<div class="istatistik"><span class="ist-ikon" aria-hidden="true">📊</span><div><strong>125+</strong><span>içerik</span></div></div>
+<div class="istatistik"><span class="ist-ikon" aria-hidden="true">📊</span><div><strong>130+</strong><span>içerik</span></div></div>
 <div class="istatistik"><span class="ist-ikon" aria-hidden="true">🎓</span><div><strong>4</strong><span>sınıf düzeyi</span></div></div>
 <div class="istatistik"><span class="ist-ikon" aria-hidden="true">📚</span><div><strong id="aktifDersSayisi">–</strong><span>yayında ders</span></div></div>
 <div class="istatistik"><span class="ist-ikon" aria-hidden="true">✨</span><div><strong>v5.0</strong><span>MERT AI</span></div></div>
@@ -1499,15 +1618,48 @@ document.getElementById("duyuruTekrar").addEventListener("click", duyuruAc);
 duyuruArka.addEventListener("click", function(e){ if(e.target === duyuruArka) duyuruKapat(); });
 
 // Odak tuzağı: Tab ile pencere dışına çıkılmasın
-duyuruArka.addEventListener("keydown", function(e){
-  if(e.key !== "Tab") return;
-  var odaklanabilir = duyuruArka.querySelectorAll("button, input, a[href]");
-  var ilk = odaklanabilir[0], son = odaklanabilir[odaklanabilir.length-1];
-  if(e.shiftKey && document.activeElement === ilk){ e.preventDefault(); son.focus(); }
-  else if(!e.shiftKey && document.activeElement === son){ e.preventDefault(); ilk.focus(); }
-});
+function odakTuzagi(kap){
+  kap.addEventListener("keydown", function(e){
+    if(e.key !== "Tab") return;
+    var odaklanabilir = kap.querySelectorAll("button, input, a[href], iframe");
+    var ilk = odaklanabilir[0], son = odaklanabilir[odaklanabilir.length-1];
+    if(e.shiftKey && document.activeElement === ilk){ e.preventDefault(); son.focus(); }
+    else if(!e.shiftKey && document.activeElement === son){ e.preventDefault(); ilk.focus(); }
+  });
+}
+odakTuzagi(duyuruArka);
 
 if(oku("duyuruGoruldu") !== DUYURU_SURUM){ duyuruAc(); }
+
+/* ---------- Tanıtım videosu ---------- */
+// Google Drive "view" bağlantısı, sayfaya gömmek için "preview" biçimine çevrildi
+var VIDEO_URL = "https://drive.google.com/file/d/1ETyK1dyu72M1FY89eLt7CDHNOp2HayI2/preview";
+var videoArka = document.getElementById("videoArka");
+var videoIframe = document.getElementById("videoIframe");
+var videoKapatBtn = document.getElementById("videoKapat");
+var videoOncekiOdak = null;
+
+function videoAc(){
+  if(duyuruArka.classList.contains("acik")) duyuruKapat();
+  videoOncekiOdak = document.activeElement;
+  videoIframe.src = VIDEO_URL;          // video yalnızca açılınca yüklenir
+  videoArka.classList.add("acik");
+  document.body.style.overflow = "hidden";
+  videoKapatBtn.focus();
+}
+function videoKapat(){
+  if(!videoArka.classList.contains("acik")) return;
+  videoArka.classList.remove("acik");
+  videoIframe.src = "about:blank";      // kapatınca video durur
+  document.body.style.overflow = "";
+  if(videoOncekiOdak && videoOncekiOdak.focus) videoOncekiOdak.focus();
+}
+
+// Not: Drive gömme oynatıcısı birçok tarayıcıda çalışmadığı için buton artık videoyu yeni sekmede açıyor.
+// Video ileride YouTube'a veya sitenin kendi sunucusuna yüklenirse bu pencere yeniden kullanılabilir.
+videoKapatBtn.addEventListener("click", videoKapat);
+videoArka.addEventListener("click", function(e){ if(e.target === videoArka) videoKapat(); });
+odakTuzagi(videoArka);
 
 /* ---------- Ders sayıları ---------- */
 var bolumler = Array.prototype.slice.call(document.querySelectorAll(".class-section"));
@@ -1611,13 +1763,15 @@ uygula();
 /* ---------- Klavye kısayolları ---------- */
 document.addEventListener("keydown", function(e){
   if(e.key === "Escape"){
+    if(videoArka.classList.contains("acik")){ videoKapat(); return; }
     if(duyuruArka.classList.contains("acik")){ duyuruKapat(); return; }
     if(anaMenu.classList.contains("acik")){ menuKapat(); menuButon.focus(); return; }
     if(document.activeElement === arama && arama.value){ arama.value = ""; uygula(); }
     return;
   }
   var yaziyor = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
-  if(e.key === "/" && !yaziyor && !duyuruArka.classList.contains("acik")){
+  var pencereAcik = duyuruArka.classList.contains("acik") || videoArka.classList.contains("acik");
+  if(e.key === "/" && !yaziyor && !pencereAcik){
     e.preventDefault();
     arama.focus();
     arama.scrollIntoView({block:"center"});
